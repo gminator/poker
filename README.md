@@ -33,4 +33,5 @@ The solution consists of 2 basic classess.
 
 | Card |
 |------|
-| string suit|
+| [string] suit Symbol For Suit |
+| [int] number Numeric value of this card |
