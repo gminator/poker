@@ -21,8 +21,8 @@ The application can be deployed using docker-compose (instructions to follow)
 
 ## Design Principles
 
-The code will be written inline with the SOLID principle honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
+The code will be written inline with the *SOLID principle* honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
 
-Other principle being applied also include Domain Driven Design or Single responsibility at this level of code. This important to faciliate good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
+Other principle being applied also include Domain Driven Design even at this level of code. This important to faciliate good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
 
 
