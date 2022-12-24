@@ -13,6 +13,16 @@ Output would be: 'Two Pair'
 
 # Solution 
 
-This solution will be written using Python3 with no framework, the simple nature of the card classifire does not need the any advance ORM's or Routing mechanism for exposing URLs.
+This solution provides a simple that will accept 5 card and output a classification or name for Poker Combinations in that set of cards. 
+
+It is written using Python3 with Django4,this only to show a working understanding of Django and will expose the functionanilty  Django Management cammands and a REST API built from Django Rest Framework. 
+
+The application can be deployed using docker-compose (instructions to follow)
 
 ## Design Principles
+
+The code will be written inline with the SOLID principle honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
+
+Other principle being applied also include Domain Driven Design or Single responsibility at this level of code. This important to faciliate good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
+
+
