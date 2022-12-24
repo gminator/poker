@@ -31,7 +31,7 @@ The acceptance criteria is written in Gherkin, I've found that this is easier fo
 ### Overview 
 The solution consists of 2 basic classess. 
 
-| Card |
-|------|
-| [string] suit Symbol For Suit |
-| [int] number Numeric value of this card |
+| Type | Name | Description |
+|-------|-| -|
+| [string] suit| Symbol For Suit |
+| [int] number |Numeric value of this card |
