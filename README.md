@@ -21,7 +21,7 @@ The application can be deployed using docker-compose (instructions to follow)
 
 ### Design Principles
 
-The code will be written inline with the *SOLID principle* honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
+The code will be written inline with the **SOLID principle** honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
 
 Other principle being applied also include Domain Driven Design even at this level of code. This important to faciliate good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
 
@@ -34,6 +34,8 @@ The solution consists of 2 basic classess.
 
 |Cards| | |
 |-------|-| -|
-| T**type** | **Name** | **Description** |
-| enum | suit| Symbol For Suit |
-| int | number |Numeric value of this card |
+| **type** | **Name** | **Description** |
+| **enum** | suit| Unicode Symbol For Cards|
+| **int** | number | Numeric Number Of Card |
+| **int** | letter |Alphabetical designation of card |
+| **boolean** | validate() | Check That card meets required criteria |
