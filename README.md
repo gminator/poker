@@ -23,7 +23,7 @@ The application can be deployed using docker-compose (instructions to follow)
 
 The code will be written inline with the **SOLID principle** honoring single respobsibiliy, open close principle and interface segregation and effort to write DRY scalable code. 
 
-Other principle being applied also include Domain Driven Design even at this level of code. This important to faciliate good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
+**Single responsiblity** in important because it faciliates good TDD or Unit test, having fat or ambigious functions  makes testing difficult. 
 
 
 The acceptance criteria is written in Gherkin, I've found that this is easier for stakeholder to validate assumptions against and for developers to write unit tests.
@@ -31,6 +31,9 @@ The acceptance criteria is written in Gherkin, I've found that this is easier fo
 ### Overview 
 The solution consists of 2 basic classess. 
 
+#### Card
+
+Cards are complex in that they can be represented by letters (K,Q,J,A) that have a numeric value. The class will store these properties that can later be used for classification, validation and evaluation. 
 
 |Cards| | |
 |-------|-| -|
