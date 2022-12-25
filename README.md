@@ -28,6 +28,22 @@ The code will be written inline with the **SOLID principle** honoring single res
 
 The acceptance criteria is written in Gherkin, I've found that this is easier for stakeholder to validate assumptions against and for developers to write unit tests.
 
+### Considerations and Assumptions
+
+### Framework Choice 
+
+Its not entirely neccasry to use a Framework like Django. I chose this to show that I have a grounded understanding of the elements of frameowrks (Routing, ORM, MVC, Serializers, etc) these exist in almost all frameworks irrespecitve of lanuage. 
+
+### Business Rules 
+
+There a rules that I will negate for the purpose of the excercise. 
+
+#### The Joker 
+The Joker is typically used as a wild card, players can use this stand in for cards of their choice. I will not be using this card in my evaluations as it will require additional user input, and is not critical for demostrating a working understanding of the principles I wish to demonstrate
+
+#### The Ace 
+The ace card can represent boht 1 & 14, aslo depending on the players choice. For purpose of the test it will always represent the highest available card. 
+
 ### Overview 
 The solution consists of 2 basic classess. 
 
