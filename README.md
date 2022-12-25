@@ -33,7 +33,7 @@ The solution consists of 2 basic classess.
 
 
 |Cards| | |
-|-------|-| -|
 | Type | Name | Description |
+|-------|-| -|
 | [string] suit| Symbol For Suit |
 | [int] number |Numeric value of this card |
