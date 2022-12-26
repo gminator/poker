@@ -56,10 +56,14 @@ The Joker is typically used as a wild card, players can use this stand in for ca
 #### The Ace 
 The ace card can represent boht 1 & 14, aslo depending on the players choice. For purpose of the test it will always represent the highest available card. 
 
+## Poker Hands
+[logo]: https://github.com/gminator/poker/raw/main/docs/img/pocker-hands.jpg "Poker Hands"
+
 # Design 
 The solution consists of 2 basic models one for Storing Cards and the Other for the business logic of classification and comparison of Hands. 
 
 ## Card
+
 
 Cards are complex in that they can be represented by letters (K,Q,J,A) that have a numeric value. The class will store these properties that can later be used for classification, validation and evaluation. 
 
