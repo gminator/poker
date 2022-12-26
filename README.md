@@ -483,3 +483,42 @@ Then I should recieve False
 
 ```
 
+
+### Classifire::is_streight_flush
+
+```
+Feature: Classifire::is_streight_flush()
+Any straight with all five cards of the same suit.
+
+Scenario: Success Is Streight
+Given I have a Classifier Object 
+And Classifier.is_flush return True
+And Classifier.is_streight return True
+And I call get Classifier::is_streight_flush()
+Then I should recieve True
+
+
+Scenario: FAiled Not A Flush
+Given I have a Classifier Object 
+And Classifier.is_flush return False
+And Classifier.is_streight return True
+And I call get Classifier::is_streight_flush()
+Then I should recieve False
+
+
+Scenario: FAiled Not A Straight
+Given I have a Classifier Object 
+And Classifier.is_flush return True
+And Classifier.is_streight return False
+And I call get Classifier::is_streight_flush()
+Then I should recieve False
+
+
+Scenario: Neither Strait nor Flush
+Given I have a Classifier Object 
+And Classifier.is_flush return False
+And Classifier.is_streight return False
+And I call get Classifier::is_streight_flush()
+Then I should recieve False
+
+```
