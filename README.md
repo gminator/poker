@@ -5,9 +5,9 @@
 3.1 [Design Principles](#design-principles)  
 3.2 [Framework Choice](#framework-choice)  
 3.3 [Business Rules](#business-rules)  
-4. [Design](#design)
-4.1 [Card()](#card)
-4.1 [Classifier](#classifire)
+4. [Design](#design)  
+4.1 [Card()](#card)  
+4.1 [Classifier](#classifire)  
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
