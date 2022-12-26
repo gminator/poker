@@ -293,3 +293,29 @@ Then I should reciece a dictionary
 	|♦|1|
 ```
 
+
+### Classifire::get_kinds 
+
+```
+Feature: Classifire::get_kinds()
+I should be able to group and count kinds/numbers 
+
+
+Scenario: 2x 4s, 3x As  
+Given have the following cards: 
+	|2H,2S,AH,AD,AS|
+And I call get Classifier::get_suits()
+Then I should reciece a dictionary 
+	|2|2|
+	|14|3|
+
+
+Scenario: 2x 4s, 2x As and 1 3  
+Given have the following cards: 
+	|2H,2S,AH,AD,3S|
+And I call get Classifier::get_suits()
+Then I should reciece a dictionary 
+	|2|2|
+	|14|2|
+	|3|1|
+```
