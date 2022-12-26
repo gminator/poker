@@ -179,3 +179,43 @@ Given Card.validate() throw InvalidSuitException
 And I call Card.parse("3H")
 Then I should recieve an InvalidSuitException
 ```
+
+## Classifier Acceptance Criteria 
+
+### Classifire::parse 
+```
+Feature: Classifire::parse()
+Conver text input to a list of cards
+
+
+Scenario: Failed Invalid String
+Given I Card.parse(...) returns Card()
+And I have Classifier() as hand
+And I call hand.parse("Invalid Hand String")
+Then I should recieve and InvalidHandString 
+
+Scenario: Failed Invalid Suit Given
+Given I Card.parse(...) throws InvlidSuitException
+And I have Classifier() as hand
+And I call hand.parse("AS,...")
+Then I should recieve and InvalidSuitException
+
+
+Scenario: Failed Invalid Number
+Given I Card.parse(...) throws InvlidNumberException
+And I have Classifier() as hand
+And I call hand.parse("AS,...")
+Then I should recieve and InvlidNumberException
+
+
+Scenario: Success
+Given I Card.parse(...) returns Card()
+And I have Classifier() as hand
+And I call hand.parse("AH,KS,QC,JD,9D")
+Then hand.cards should contain 5 Cards:
+	| Card(suit="♥", number=14, letter="A") |
+	| Card(suit="♠", number=13, letter="K") | 
+	| Card(suit="♣", number=12, letter="Q") |
+	| Card(suit="♦", number=11, letter="J") | 
+	| Card(suit="♦", number=9, letter="9")  |
+```
