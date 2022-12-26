@@ -40,7 +40,7 @@ class CardTest(TestCase):
 			result = card.validate()
 			self.assertEquals(result, expected)
 		except GameException as e:
-			self.assertTrue(type(e) is exception)
+			self.assertTrue(type(e) is exception) 
 
 	
 	parse = lambda: (
