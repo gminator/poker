@@ -55,9 +55,9 @@ The Joker is typically used as a wild card, players can use this stand in for ca
 The ace card can represent boht 1 & 14, aslo depending on the players choice. For purpose of the test it will always represent the highest available card. 
 
 # Design 
-The solution consists of 2 basic classess. 
+The solution consists of 2 basic models one for Storing Cards and the Other for the business logic of classification and comparison of Hands. 
 
-#### Card
+## Card
 
 Cards are complex in that they can be represented by letters (K,Q,J,A) that have a numeric value. The class will store these properties that can later be used for classification, validation and evaluation. 
 
@@ -66,5 +66,22 @@ Cards are complex in that they can be represented by letters (K,Q,J,A) that have
 | **type** | **Name** | **Description** |
 | **enum** | suit| Unicode Symbol For Cards|
 | **int** | number | Numeric Number Of Card |
-| **int** | letter |Alphabetical designation of card |
+| **char** | letter |Alphabetical designation of card |
+| **Card** | __init__(string card) | Initiate a new card|
 | **boolean** | validate() | Check That card meets required criteria |
+
+## Classifie
+This class will house all the bussiness logic for the variuos poker hands 
+
+|Classifire| | |
+|-------|-| -|
+| **type** | **Name** | **Description** |
+| **array** |cards| An array of 5 Card() |
+| **Classifier** | __init__(string cards) | Initiate a new card|
+| **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
+| **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
+| **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
+| **int** | high_card() | Get the highest card in hand |
+| **int** | low_card() | Get the highest card in hand |
+| **dictionary** | get_suits() | Get group of suits |
+| **dictionary** | get_kinds() | Get group of kinds |
