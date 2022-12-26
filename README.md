@@ -96,9 +96,9 @@ This class will house all the bussiness logic for the variuos poker hands
 | **void** | [parse(string cards)](#classifireparse) | Initiate a new card|
 | **int** | [high_card()](#classifirehigh_card) | Get the highest card in hand |
 | **int** | [low_card()](#classifirelow_card) | Get the highest card in hand |
-| **dictionary** | [get_suits()(#classifireget_suits)] | Get group of suits |
-| **dictionary** | get_kinds() | Get group of kinds |
-| **boolean** | is_a_pair(int pair) | Determine if all 5 cards are of the same suit |
+| **dictionary** | [get_suits()](#classifireget_suits) | Get group of suits |
+| **dictionary** | [get_kinds()](#classifireget_kinds) | Get group of kinds |
+| **boolean** | [is_a_pair(int pair)](#classifireis_pair) | Determine if all 5 cards are of the same suit |
 | **boolean** | is_full_house() | Determine if there is full hand of sets |
 | **boolean** | is_flush() | Determine if all 5 cards are of the same suit |
 | **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
