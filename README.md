@@ -1,6 +1,6 @@
 # Table of Contents  
-[Headers](#headers)  
-[Emphasis](#emphasis)  
+[1. The Poker Test](#the-poker-test)  
+[2. Brief](#brief)  
 
 # The Poker Test
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID.
