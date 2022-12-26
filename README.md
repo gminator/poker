@@ -12,6 +12,8 @@
 5. [User Stories()](#user-stories)  
 5.1. [Card Acceptance Criteria](#card-acceptance-criteria)  
 5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
+6. [Installation](#installation)  
+
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -553,4 +555,13 @@ And Classifier.is_streight_flush return True
 And Classifier.get_high return 10
 And I call get Classifier::is_royal_flush()
 Then I should recieve False
+```
+
+# Installation 
+
+```bash
+docker-compose up -d 
+
+#Run Unit Tests
+docker exec -it poker_web_1 python manage.py test
 ```
