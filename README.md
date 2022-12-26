@@ -36,7 +36,6 @@ The code will be written inline with the **SOLID principle** honoring single res
 
 The acceptance criteria is written in Gherkin, I've found that this is easier for stakeholder to validate assumptions against and for developers to write unit tests.
 
-### Considerations and Assumptions
 
 ### Framework Choice 
 
