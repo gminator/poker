@@ -8,7 +8,7 @@
 3.4 [Poker Hands](#poker-hands)  
 4. [Design](#design)  
 4.1 [Card()](#card)  
-4.1 [Classifier()](#classifire)  
+4.1 [Classifier()](#classifier)  
 5. [User Stories()](#user-stories)  
 5.1. [Card Acceptance Criteria](#card-acceptance-criteria)  
 5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
@@ -94,7 +94,7 @@ This class will house all the bussiness logic for the variuos poker hands
 | **array** |cards| An array of 5 Card() |
 | **Classifier** | __init__(string cards) | Initiate a new card|
 | **void** | [parse(string cards)](#classifireparse) | Initiate a new card|
-| **int** | high_card() | Get the highest card in hand |
+| **int** | [high_card()](#classifirehigh_card) | Get the highest card in hand |
 | **int** | low_card() | Get the highest card in hand |
 | **dictionary** | get_suits() | Get group of suits |
 | **dictionary** | get_kinds() | Get group of kinds |
