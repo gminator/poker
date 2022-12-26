@@ -438,3 +438,25 @@ Then I should recieve False
 
 ```
 
+### Classifire::is_flush
+
+```
+Feature: Classifire::is_flush()
+Any five consecutive cards of different suits.
+
+Scenario: Success Is FLush
+Given I have a Classifier Object
+And get_suits returns a dictionary:
+	|♥|5|
+And I call get Classifier::is_flush()
+Then I should recieve True
+
+
+Scenario: Success Is FLush
+Given I have a Classifier Object
+And get_suits returns a dictionary:
+	|♥|4|
+	|♠|1|
+And I call get Classifier::is_flush()
+Then I should recieve False
+
