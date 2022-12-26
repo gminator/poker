@@ -1,6 +1,6 @@
 # Table of Contents  
 1. [The Poker Test](#the-poker-test)  
-2. [Customer Brief](#brief)  
+2. [Customer Brief](#customer-brief)  
 3. [Solution](#solution)  
 3.1 [Design Principles](#design-principles)  
 3.2 [Framework Choice](#framework-choice)  
