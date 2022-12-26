@@ -128,3 +128,20 @@ class Classifier(object):
 				card = c
 
 		return (card.number,card)
+
+	def low_card(self,):
+		"""
+		Low Card
+
+		Get lowest card in hand 
+
+		-- Return 
+		tuple (int number, Card card)
+		"""
+		card = self.cards[0]
+
+		for c in self.cards: 
+			if c.number < card.number: 
+				card = c
+
+		return (card.number,card)

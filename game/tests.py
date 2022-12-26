@@ -136,3 +136,27 @@ class ClassifierTest(TestCase):
 		self.assertEquals(card.suit, expected.suit)
 		self.assertEquals(card.letter, expected.letter)
 		self.assertEquals(card.number, expected.number)
+
+	
+	low_card = lambda: (
+			( 
+				
+				#Successfull Test
+				("AS,10C,10H,8D,3S", 3, Card(None, suit="S", number="3", letter="3", symbol="♠")),
+
+				("9S,10H,10C,7D,4H", 4, Card(None, suit="H", number="4", letter="4", symbol="♥")),
+			)
+		)
+
+
+	@data_provider(low_card)
+	def test_low_card(self, string, value, expected):  
+		classifier = Classifier()
+		classifier.parse(string)
+		val, card  = classifier.low_card()
+
+		self.assertEquals(val, value)
+		self.assertEquals(card.symbol, expected.symbol)
+		self.assertEquals(card.suit, expected.suit)
+		self.assertEquals(card.letter, expected.letter)
+		self.assertEquals(card.number, expected.number)
