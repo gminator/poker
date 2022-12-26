@@ -1,9 +1,11 @@
-##### Table of Contents  
+# Table of Contents  
 [Headers](#headers)  
 [Emphasis](#emphasis)  
 
-# Porker Test
+# The Poker Test
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID.
+
+It show how I go about planning, building and testing my work. 
 
 # Brief 
 
