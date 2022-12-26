@@ -223,3 +223,23 @@ Then hand.cards should contain 5 Cards:
 	| Card(suit="♦", number=11, letter="J") | 
 	| Card(suit="♦", number=9, letter="9")  |
 ```
+### Classifire::high_card 
+```
+
+Feature: Classifire::high_card()
+Retrieve highest card in deck 
+
+
+Scenario: Regular cards 
+Given have the following cards: 
+	|1H,6S,6C,5D,2D|
+And I call get Classifier::high_card()
+Then I should reciece 6
+
+
+Scenario: Complex Cards 
+Given have the following cards: 
+	|AH,6S,KC,5D,JD|
+And I call get Classifier::high_card()
+Then I should reciece 14
+```
