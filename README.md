@@ -459,4 +459,27 @@ And get_suits returns a dictionary:
 	|♠|1|
 And I call get Classifier::is_flush()
 Then I should recieve False
+```
+
+
+### Classifire::is_streight
+
+```
+Feature: Classifire::is_streight()
+Any five consecutive cards of different suits
+
+Scenario: Success Is Streight
+Given I have a Classifier Object with:
+	|AS, 10C, JH, QD, KS|
+And I call get Classifier::is_streight()
+Then I should recieve True
+
+
+Scenario: Failed Is Streight
+Given I have a Classifier Object with:
+	|AS, 9C, JH, QD, KS|
+And I call get Classifier::is_streight()
+Then I should recieve False
+
+```
 
