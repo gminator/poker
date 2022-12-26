@@ -93,6 +93,7 @@ This class will house all the bussiness logic for the variuos poker hands
 | **type** | **Name** | **Description** |
 | **array** |cards| An array of 5 Card() |
 | **Classifier** | __init__(string cards) | Initiate a new card|
+| **void** | [__init__(string cards)](#classifireparse) | Initiate a new card|
 | **int** | high_card() | Get the highest card in hand |
 | **int** | low_card() | Get the highest card in hand |
 | **dictionary** | get_suits() | Get group of suits |
