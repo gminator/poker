@@ -78,10 +78,13 @@ This class will house all the bussiness logic for the variuos poker hands
 | **type** | **Name** | **Description** |
 | **array** |cards| An array of 5 Card() |
 | **Classifier** | __init__(string cards) | Initiate a new card|
-| **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
-| **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
-| **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
 | **int** | high_card() | Get the highest card in hand |
 | **int** | low_card() | Get the highest card in hand |
 | **dictionary** | get_suits() | Get group of suits |
 | **dictionary** | get_kinds() | Get group of kinds |
+| **boolean** | is_a_pair(int pair) | Determine if all 5 cards are of the same suit |
+| **boolean** | is_full_house() | Determine if there is full hand of sets |
+| **boolean** | is_flush() | Determine if all 5 cards are of the same suit |
+| **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
+| **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
+| **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
