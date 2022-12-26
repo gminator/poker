@@ -9,7 +9,7 @@
 4. [Design](#design)  
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifire)  
-5 [User Stories()](#user-stories)  
+5. [User Stories()](#user-stories)  
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -103,8 +103,15 @@ This class will house all the bussiness logic for the variuos poker hands
 | **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
 
 # User Stories 
+Below are the user stories written in a Gherkin styles. I prefer this method for writting out test cases, it makes it easy for both Stakeholders and developers to understand and critique the proposed flow.
 
-## Card::validate()
+## Card
+These are the user stories for the card Model, validate will throw any exception if any of the attributes are outside of the specified range. 
+
+It is implement by the parse, so that the error can buble up to the hgih levels of the code (API or Management Cammands) 
+
+
+### Card::validate()
 ```
 Feature: Card::validate
 Validate the user inputs
@@ -125,4 +132,49 @@ Given I have Card(number=20,...)
 And I call the validate method 
 Then I should recieve InvalidNumberException
 ```
+### Card::parse(string card)
 
+```
+Feature: Card::parse
+Conver text input to Card
+
+Scenario: Ace oh Hearts
+Given Card.validate() returns True 
+And I call Card.parse("AH")
+Then I should recieve Card(suit="♥", number=14, letter="A")
+
+Scenario: King Of Spades
+Given Card.validate() returns True 
+And I call Card.parse("KS")
+Then I should recieve Card(suit="♠", number=13, letter="K")
+
+
+Scenario: Queen Of Clubs
+Given Card.validate() returns True 
+And I call Card.parse("QC")
+Then I should recieve Card(suit="♣", number=12, letter="Q")
+
+
+Scenario: Jack Of Diamonds
+Given Card.validate() returns True 
+And I call Card.parse("JD")
+Then I should recieve Card(suit="♦", number=11, letter="J")
+
+
+Scenario: 9 Of Diamonds
+Given Card.validate() returns True 
+And I call Card.parse("JD")
+Then I should recieve Card(suit="♦", number=9, letter="9")
+
+
+Scenario: 3 Of Hearts
+Given Card.validate() returns True 
+And I call Card.parse("3H")
+Then I should recieve Card(suit="♥", number=3, letter="3")
+
+
+Scenario: Validation Failed
+Given Card.validate() throw InvalidSuitException 
+And I call Card.parse("3H")
+Then I should recieve an InvalidSuitException
+```
