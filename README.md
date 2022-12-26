@@ -104,10 +104,25 @@ This class will house all the bussiness logic for the variuos poker hands
 
 # User Stories 
 
+## Card::validate()
 ```
 Feature: Card::validate
 Validate the user inputs
 
-*Scenario: Success*
+Scenario: Failed Invalid Suit
+Given I have Card(suit="B",...)
+And I call the validate method 
+Then I should recieve InvalidSuitException
+
+
+Scenario: Failed Number Too Low
+Given I have Card(number=0,...)
+And I call the validate method 
+Then I should recieve InvalidNumberException
+
+Scenario: Failed Number Too High 
+Given I have Card(number=20,...)
+And I call the validate method 
+Then I should recieve InvalidNumberException
 ```
 
