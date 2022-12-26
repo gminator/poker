@@ -20,3 +20,9 @@ class InvalidCardStringException(GameException):
 	"""
 	Thrown if when card string is not valud
 	"""
+
+
+class InvalidHandString(GameException):
+	"""
+	Thrown if when card string is not valud
+	"""

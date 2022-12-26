@@ -82,3 +82,32 @@ class Card(object):
 		card = Card(card, number=match.group(1), suit=match.group(2))
 		card.validate()
 		return card
+
+
+
+class Classifier(object): 
+
+	def __init__(self,):
+		self.cards = []
+		
+
+	def parse(self, hand: str): 
+		"""
+		Parse hand into individuals cards
+
+		-- Return
+		void 
+
+		-- Throws 
+		InvalidHandString
+		InvalidCardStringException 
+		InvalidSuitException
+		InvalidCardNumberException
+
+		"""
+		match = re.search("([0-9AJKQ]{,2}[HDSC],?){5}", hand, re.IGNORECASE)
+
+		if not match:
+			raise InvalidHandString("%s does not match format AS,10C,10H,3D,3S" % hand)
+
+		self.cards = [ Card.parse(i) for i in hand.split(",")]

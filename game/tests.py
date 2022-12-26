@@ -1,5 +1,5 @@
 from django.test import TestCase
-from game.models import Card 
+from game.models import *
 from game.exceptions import * 
 from unittest_data_provider import data_provider
 from unittest.mock import patch
@@ -87,3 +87,30 @@ class CardTest(TestCase):
 				self.assertTrue(type(e) is exception)
 
 	
+class ClassifierTest(TestCase):
+
+	parse = lambda: (
+			( 
+				#Invalid String
+				("Invalid Hand String", {"return_value" : Card(None, suit="S", number="J", letter="J", symbol="♠")}, InvalidHandString, 5),
+				
+				#Card Validation Failed
+				("AS,10C,10H,3D,3S", {"side_effect" : InvalidSuitException()}, InvalidSuitException, 0),
+				("AS,10C,10H,3D,3S", {"side_effect" : InvalidCardNumberException()}, InvalidCardNumberException, 0),
+				
+				#Successfull Test
+				("AS,10C,10H,3D,3S", {"return_value" : Card(None, suit="S", number="J", letter="J", symbol="♠")}, None, 5),
+			)
+		)
+
+
+	@data_provider(parse)
+	def test_parse(self, string, card_effect, exception, cards): 
+		with patch.object(Card, 'parse', **card_effect) as mock:
+			try:
+				classifier = Classifier()
+				classifier.parse(string)
+				self.assertEquals(len(classifier.cards), cards) 
+			except GameException as e:
+				self.assertTrue(type(e) is exception)
+
