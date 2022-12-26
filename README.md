@@ -1,16 +1,18 @@
 # Table of Contents  
 1. [The Poker Test](#the-poker-test)  
-2. [Brief](#brief)  
+2. [Customer Brief](#brief)  
 3. [Solution](#solution)  
 3.1 [Design Principles](#design-principles)  
 3.2 [Framework Choice](#framework-choice)
+3.3 [Business Rules](#business-rules)
+4. [Design](#design)
 
 # The Poker Test
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
 
 It show how I go about planning, building and testing my work. 
 
-# Brief 
+# Customer Brief 
 
 For this program, you will be taking a text input of playing cards and evaluating what the best poker
 hand could be constructed with the cards.
@@ -52,7 +54,7 @@ The Joker is typically used as a wild card, players can use this stand in for ca
 #### The Ace 
 The ace card can represent boht 1 & 14, aslo depending on the players choice. For purpose of the test it will always represent the highest available card. 
 
-### Overview 
+### Design 
 The solution consists of 2 basic classess. 
 
 #### Card
