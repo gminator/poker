@@ -1,8 +1,8 @@
 # Table of Contents  
 [The Poker Test](#the-poker-test)  
-[Brief](#brief)
-[Solution](#solution)
-[Design Principles](#design-principles)
+[Brief](#brief)  
+[Solution](#solution)  
+[Design Principles](#design-principles)  
 
 # The Poker Test
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
