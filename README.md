@@ -10,7 +10,7 @@
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifire)  
 5. [User Stories()](#user-stories)  
-5.1. [Card Acceptance Criteria](#card-acceptance-criteria)
+5.1. [Card Acceptance Criteria](#card-acceptance-criteria)  
 5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
 
 # Summary
