@@ -442,7 +442,7 @@ Then I should recieve False
 
 ```
 Feature: Classifire::is_flush()
-Any five consecutive cards of different suits.
+Any five cards of the same suit which are not consecutive
 
 Scenario: Success Is FLush
 Given I have a Classifier Object
