@@ -1,7 +1,9 @@
 # Table of Contents  
 [The Poker Test](#the-poker-test)  
 [Brief](#brief)
+
 [Solution](#solution)
+
 [Design Principles](#design-principles)
 
 # The Poker Test
