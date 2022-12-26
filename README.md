@@ -5,9 +5,10 @@
 3.1 [Design Principles](#design-principles)  
 3.2 [Framework Choice](#framework-choice)  
 3.3 [Business Rules](#business-rules)  
+3.4 [Poker Hands](#poker-hands)  
 4. [Design](#design)  
 4.1 [Card()](#card)  
-4.1 [Classifier](#classifire)  
+4.1 [Classifier()](#classifire)  
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -57,6 +58,9 @@ The Joker is typically used as a wild card, players can use this stand in for ca
 The ace card can represent boht 1 & 14, aslo depending on the players choice. For purpose of the test it will always represent the highest available card. 
 
 ### Poker Hands
+
+The supported poker hands are outlined below. 
+
 ![Poker Hands](https://github.com/gminator/poker/raw/main/docs/img/pocker-hands.jpg "Poker Hands")
 
 
