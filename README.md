@@ -2,7 +2,7 @@
 1. [The Poker Test](#the-poker-test)  
 2. [Brief](#brief)  
 3. [Solution](#solution)  
-..1. [Design Principles](#design-principles)  
+1.1 [Design Principles](#design-principles)  
 
 # The Poker Test
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
