@@ -1,5 +1,5 @@
 # Table of Contents  
-1. [The Poker Test](#the-poker-test)  
+1. [Summary](#summary)  
 2. [Customer Brief](#customer-brief)  
 3. [Solution](#solution)  
 3.1 [Design Principles](#design-principles)  
@@ -7,7 +7,7 @@
 3.3 [Business Rules](#business-rules)  
 4. [Design](#design)
 
-# The Poker Test
+# Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
 
 It show how I go about planning, building and testing my work. 
