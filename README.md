@@ -10,6 +10,7 @@
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifire)  
 5. [User Stories()](#user-stories)  
+6. [Card Acceptance Criteria](#card-acceptance-criteria)
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -105,7 +106,7 @@ This class will house all the bussiness logic for the variuos poker hands
 # User Stories 
 Below are the user stories written in a Gherkin styles. I prefer this method for writting out test cases, it makes it easy for both Stakeholders and developers to understand and critique the proposed flow.
 
-## Card
+## Card Acceptance Criteria 
 These are the user stories for the card Model, validate will throw any exception if any of the attributes are outside of the specified range. 
 
 It is implement by the parse, so that the error can buble up to the hgih levels of the code (API or Management Cammands) 
