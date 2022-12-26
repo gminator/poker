@@ -411,3 +411,30 @@ And I call get Classifier::is_two_pair()
 Then I should recieve False
 
 ```
+
+### Classifire::is_full_house
+
+```
+Feature: Classifire::is_full_house()
+A hand that contains three cards of one rank and two cards of another rank
+
+Scenario: Success Is Full House
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|3|
+And I call get Classifier::is_full_house()
+Then I should recieve True
+
+
+Scenario: Success Is Full House
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|2|
+	|K|1|
+And I call get Classifier::is_full_house()
+Then I should recieve False
+
+```
+
