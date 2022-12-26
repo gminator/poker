@@ -1,6 +1,6 @@
 # Table of Contents  
 1. [The Poker Test](#the-poker-test)  
-2.[Brief](#brief)  
+2. [Brief](#brief)  
 3. [Solution](#solution)  
 ..1. [Design Principles](#design-principles)  
 
