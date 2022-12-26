@@ -243,3 +243,24 @@ Given have the following cards:
 And I call get Classifier::high_card()
 Then I should reciece 14
 ```
+
+### Classifire::low_card 
+```
+
+Feature: Classifire::low_card()
+Retrieve lowest card in deck 
+
+
+Scenario: Regular cards 
+Given have the following cards: 
+	|1H,6S,6C,5D,2D|
+And I call get Classifier::low_card()
+Then I should reciece 1
+
+
+Scenario: Complex Cards 
+Given have the following cards: 
+	|AH,6S,KC,5D,JD|
+And I call get Classifier::low_card()
+Then I should reciece 5
+```
