@@ -385,3 +385,34 @@ And I call get Classifier::is_a_pair(4)
 Then I should recieve False 
 
 ```
+
+
+### Classifire::is_two_pair 
+
+```
+Feature: Classifire::is_two_pair()
+Check for 2 sets of pairs 
+
+
+Scenario: Success 2 Pair 
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|2|
+And I call get Classifier::is_two_pair()
+Then I should recieve True
+
+
+Feature: Classifire::is_two_pair()
+Check for 2 sets of pairs 
+
+
+Scenario: Failed 2 Pair 
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|3|
+And I call get Classifier::is_two_pair()
+Then I should recieve False
+
+```
