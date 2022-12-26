@@ -111,3 +111,20 @@ class Classifier(object):
 			raise InvalidHandString("%s does not match format AS,10C,10H,3D,3S" % hand)
 
 		self.cards = [ Card.parse(i) for i in hand.split(",")]
+
+	def high_card(self,):
+		"""
+		High Card
+
+		Get highest card in hand 
+
+		-- Return 
+		tuple (int number, Card card)
+		"""
+		card = self.cards[0]
+
+		for c in self.cards: 
+			if c.number > card.number: 
+				card = c
+
+		return (card.number,card)

@@ -114,3 +114,25 @@ class ClassifierTest(TestCase):
 			except GameException as e:
 				self.assertTrue(type(e) is exception)
 
+	high_card = lambda: (
+			( 
+				
+				#Successfull Test
+				("AS,10C,10H,3D,3S", 14, Card(None, suit="S", number="A", letter="A", symbol="♠")),
+
+				("2S,10H,10C,3D,3S", 10, Card(None, suit="H", number="10", letter="10", symbol="♥")),
+			)
+		)
+
+
+	@data_provider(high_card)
+	def test_high_card(self, string, value, expected):  
+		classifier = Classifier()
+		classifier.parse(string)
+		val, card  = classifier.high_card()
+
+		self.assertEquals(val, value)
+		self.assertEquals(card.symbol, expected.symbol)
+		self.assertEquals(card.suit, expected.suit)
+		self.assertEquals(card.letter, expected.letter)
+		self.assertEquals(card.number, expected.number)
