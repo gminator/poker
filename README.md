@@ -402,11 +402,6 @@ And get_kinds returns a dictionary:
 And I call get Classifier::is_two_pair()
 Then I should recieve True
 
-
-Feature: Classifire::is_two_pair()
-Check for 2 sets of pairs 
-
-
 Scenario: Failed 2 Pair 
 Given I have a Classifier Object
 And get_kinds returns a dictionary:
