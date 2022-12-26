@@ -522,3 +522,34 @@ And I call get Classifier::is_streight_flush()
 Then I should recieve False
 
 ```
+
+
+### Classifire::is_royal_flush
+
+```
+Feature: Classifire::is_royal_flush()
+Any straight with all five cards of the same suit.
+
+Scenario: Success Is Streight
+Given I have a Classifier Object 
+And Classifier.is_streight_flush return True
+And Classifier.get_high return 14
+And I call get Classifier::is_royal_flush()
+Then I should recieve True
+
+
+Scenario: Faild Is Not Streight Flush
+Given I have a Classifier Object 
+And Classifier.is_streight_flush return False
+And Classifier.get_high return 14
+And I call get Classifier::is_royal_flush()
+Then I should recieve False
+
+
+Scenario: Faild Is High Enough
+Given I have a Classifier Object 
+And Classifier.is_streight_flush return True
+And Classifier.get_high return 10
+And I call get Classifier::is_royal_flush()
+Then I should recieve False
+```
