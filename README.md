@@ -11,6 +11,7 @@
 4.1 [Classifier()](#classifire)  
 5. [User Stories()](#user-stories)  
 5.1. [Card Acceptance Criteria](#card-acceptance-criteria)
+5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -181,6 +182,9 @@ Then I should recieve an InvalidSuitException
 ```
 
 ## Classifier Acceptance Criteria 
+This is the acceptance criteria for the Clasiffier, its written in a DRY format so that the individual test are re-usable. 
+
+i.e Streight Flush is a combination of is_streight and is_flush, this makes the most effecient use of the code. 
 
 ### Classifire::parse 
 ```
