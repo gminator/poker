@@ -10,7 +10,7 @@
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifire)  
 5. [User Stories()](#user-stories)  
-6. [Card Acceptance Criteria](#card-acceptance-criteria)
+5.1. [Card Acceptance Criteria](#card-acceptance-criteria)
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
