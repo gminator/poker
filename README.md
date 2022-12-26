@@ -99,11 +99,11 @@ This class will house all the bussiness logic for the variuos poker hands
 | **dictionary** | [get_suits()](#classifireget_suits) | Get group of suits |
 | **dictionary** | [get_kinds()](#classifireget_kinds) | Get group of kinds |
 | **boolean** | [is_a_pair(int pair)](#classifireis_pair) | Determine if all 5 cards are of the same suit |
-| **boolean** | is_full_house() | Determine if there is full hand of sets |
-| **boolean** | is_flush() | Determine if all 5 cards are of the same suit |
-| **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
-| **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
-| **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
+| **boolean** | [is_full_house()](#classifireis_full_house) | Determine if there is full hand of sets |
+| **boolean** | [is_flush()](#classifireis_flush) | Determine if all 5 cards are of the same suit |
+| **boolean** | [is_streight()](#classifireis_strieght) | Determine if we have a sequence of 5 numbers |
+| **boolean** | [is_streight_flush()](#classifireis_flush) | Determine if we have a sequence of 5 numbers of the same suits |
+| **boolean** | [is_royal_flush()](#classifireis_royal_flush) | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
 
 # User Stories 
 Below are the user stories written in a Gherkin styles. I prefer this method for writting out test cases, it makes it easy for both Stakeholders and developers to understand and critique the proposed flow.
