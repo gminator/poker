@@ -264,3 +264,32 @@ Given have the following cards:
 And I call get Classifier::low_card()
 Then I should reciece 5
 ```
+
+
+
+### Classifire::get_suits 
+
+```
+Feature: Classifire::get_suits()
+I should be able to group and count suits 
+
+
+Scenario: 2 Hearts 3 Spades
+Given have the following cards: 
+	|1H,6H,6S,5S,2S|
+And I call get Classifier::get_suits()
+Then I should reciece a dictionary 
+	|♥|2|
+	|♣|3|
+
+
+Scenario: 2 Hearts, 3 Spades and 1 Diamond
+Given have the following cards: 
+	|1H,6H,6S,5S,2S|
+And I call get Classifier::get_suits()
+Then I should reciece a dictionary 
+	|♥|2|
+	|♣|2|
+	|♦|1|
+```
+
