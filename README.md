@@ -70,7 +70,8 @@ Cards are complex in that they can be represented by letters (K,Q,J,A) that have
 | **Card** | __init__(string card) | Initiate a new card|
 | **boolean** | validate() | Check That card meets required criteria |
 
-## Classifie
+## Classifier
+
 This class will house all the bussiness logic for the variuos poker hands 
 
 |Classifire| | |
@@ -88,3 +89,4 @@ This class will house all the bussiness logic for the variuos poker hands
 | **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
 | **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
 | **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
+
