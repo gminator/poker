@@ -1,5 +1,6 @@
 from django.db import models
 from game.exceptions import *
+import re
 
 
 class Card(object):
@@ -16,10 +17,22 @@ class Card(object):
 		("C","♣"),
 	)
 
+	LETTERS = (
+		("J", 11),
+		("Q", 12),
+		("K", 13),
+		("A", 14),
+	)
+
 	def __init__(self, card: str, **kwargs):
 
 		#For overiding in unit tests
 		[setattr(self,k,v) for k,v in kwargs.items()]
+
+		self.card = card
+		self.letter = str(self.number)
+		self.number = int(dict(Card.LETTERS).get(self.number, self.number))
+		self.symbol = dict(Card.SUITS).get(self.suit, "")
 
 	def validate(self,): 
 		"""
@@ -43,3 +56,29 @@ class Card(object):
 			raise InvalidCardNumberException("%s is not a valid number between 2 - 14" % self.number) 
 
 		return True
+
+
+	@staticmethod
+	def parse(card: str):
+		"""
+		Parse 
+
+		This will take the card string and convert its attributes
+
+		-- Returns 
+		Card()
+
+		-- Throws 
+		InvalidCardStringException 
+		InvalidSuitException
+		InvalidCardNumberException
+		"""
+		card = card.upper()
+		match = re.search("([0-9AJKQ]{,2})([HDSC])", card, re.IGNORECASE)
+		
+		if not match:
+			raise InvalidCardStringException("%s is not a valid card string" % card)
+		
+		card = Card(card, number=match.group(1), suit=match.group(2))
+		card.validate()
+		return card
