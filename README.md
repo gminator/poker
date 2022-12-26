@@ -307,7 +307,7 @@ Given have the following cards:
 And I call get Classifier::get_suits()
 Then I should reciece a dictionary 
 	|2|2|
-	|14|3|
+	|4|3|
 
 
 Scenario: 2x 4s, 2x As and 1 3  
@@ -318,4 +318,70 @@ Then I should reciece a dictionary
 	|2|2|
 	|14|2|
 	|3|1|
+```
+
+
+### Classifire::is_a_pair 
+
+```
+Feature: Classifire::get_kinds()
+Determin combination of kinds
+
+
+Scenario: Success 1 Pair 
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|3|
+And I call get Classifier::is_a_pair(2)
+Then I should recieve True
+
+
+Scenario: Failed 1 Pair 
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|1|2|
+	|1|4|
+	|3|3|
+And I call get Classifier::is_a_pair(2)
+Then I should recieve False
+
+
+Scenario: Success 3 Of A Kind
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|3|
+And I call get Classifier::is_a_pair(3)
+Then I should recieve True
+
+
+Scenario: Failed 3 Of A Kind
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|2|3|
+	|1|14|
+And I call get Classifier::is_a_pair(3)
+Then I should recieve False 
+
+
+Scenario: Success 4 Of A Kind
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|3|4|
+And I call get Classifier::is_a_pair(4)
+Then I should recieve True
+
+
+Scenario: Failed 4 Of A Kind
+Given I have a Classifier Object
+And get_kinds returns a dictionary:
+	|2|2|
+	|2|3|
+	|1|14|
+And I call get Classifier::is_a_pair(4)
+Then I should recieve False 
+
 ```
