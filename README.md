@@ -9,6 +9,7 @@
 4. [Design](#design)  
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifire)  
+5 [User Stories()](#user-stories)  
 
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
@@ -100,4 +101,13 @@ This class will house all the bussiness logic for the variuos poker hands
 | **boolean** | is_streight() | Determine if we have a sequence of 5 numbers |
 | **boolean** | is_streight_flush() | Determine if we have a sequence of 5 numbers of the same suits |
 | **boolean** | is_royal_flush() | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
+
+# User Stories 
+
+```
+Feature: Card::validate
+Validate the user inputs
+
+*Scenario: Success*
+```
 
