@@ -18,7 +18,9 @@
 # Summary
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
 
-It show how I go about planning, building and testing my work. 
+It show how I go about planning, building and testing my work. All my projects are acompanied with document similar to this as part my planning approach. 
+
+This document is intended for both Stakeholders and developers, and should help reduce ambiguity in the delivery scope by clearly outline expecations and ensure that solution satisfies all critical requirements. 
 
 # Customer Brief 
 
