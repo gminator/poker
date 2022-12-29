@@ -257,4 +257,22 @@ class ClassifierTest(TestCase):
 			classifier = Classifier()
 			self.assertEquals(expected_output, classifier.is_full_house())
 
-			
+
+	is_flush = lambda: (
+			( 
+				
+				#Successfull Test
+				(False, {"return_value" : {"♥" : 2, "♣" : 3}}),
+				(False, {"return_value" : {"♥" : 4, "♣" : 1}}),
+				(True, {"return_value" : {"♥" : 5}}),
+			)
+		)
+
+
+	@data_provider(is_flush)
+	def test_is_flush(self, expected_output, get_kind_reponse):  
+		with patch.object(Classifier, 'get_suits', **get_kind_reponse) as mock:
+			classifier = Classifier()
+			self.assertEquals(expected_output, classifier.is_flush())
+
+

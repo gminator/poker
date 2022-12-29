@@ -231,4 +231,20 @@ class Classifier(object):
 		Classifier::is_a_pair
 		"""	
 		return self.is_a_pair(2) and self.is_a_pair(3)
+
+
+	def is_flush(self,):
+		"""
+		Is Flush 
+
+		Determine if all 5 cards are of the same suit
+
+		-- Return 
+		Boolean True | False
+
+		-- Depends 
+		Classifier::get_suits
+		"""	
+		kinds = self.get_suits().values() #Group in kinds 
+		return 5 in kinds
 		
