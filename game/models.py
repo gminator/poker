@@ -261,7 +261,7 @@ class Classifier(object):
 		cards = [c.number for c in  self.cards]
 		cards.sort()
 
-		#If this is a mathematical sequens 
+		#If this is a mathematical sequence 
 		# Then (value @ n + 1) - i should always be 1
 
 		for n,i in enumerate(cards):

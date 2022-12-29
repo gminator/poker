@@ -292,3 +292,25 @@ class ClassifierTest(TestCase):
 		classifier.parse(card_string)
 		self.assertEquals(expected_output, classifier.is_straight())
 
+
+
+
+	is_straight_flush = lambda: (
+			( 
+				
+				#Successfull Test
+				(True, {"return_value" : True}, {"return_value" : True}),
+				#Not Streight 
+				(False, {"return_value" : False}, {"return_value" : True}),
+				#Is a streight but not flush
+				(False, {"return_value" : True}, {"return_value" : False}),
+			)
+		)
+
+
+	@data_provider(is_flush)
+	def test_is_straight_flush(self, expected_output, is_straight_output, is_flush_output):  
+		with patch.object(Classifier, 'is_straight', **is_straight_output) as mock:
+			with patch.object(Classifier, 'is_flush', **is_flush_output) as mock:
+				classifier = Classifier()
+				self.assertEquals(expected_output, classifier.is_straight_flush())
