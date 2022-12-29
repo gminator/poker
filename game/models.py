@@ -286,5 +286,18 @@ class Classifier(object):
 		"""
 		return self.is_flush() and self.is_straight()
 
+	def is_royal_flush(self,):
+		"""
+		Is Royal Flush 
 
+		Determine if this is a streight flush
+		and has a high card of 14
 
+		-- Return 
+		Boolean True|False
+
+		-- Depends
+		Classifier.is_streight_flush
+		Classifier.high_cards
+		"""
+		return self.is_straight_flush() and self.high_card() == 14

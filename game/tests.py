@@ -314,3 +314,24 @@ class ClassifierTest(TestCase):
 			with patch.object(Classifier, 'is_flush', **is_flush_output) as mock:
 				classifier = Classifier()
 				self.assertEquals(expected_output, classifier.is_straight_flush())
+
+
+	is_royal_flush = lambda: (
+			( 
+				
+				#Successfull Test
+				(True, {"return_value" : True}, {"return_value" : 14}),
+				#Not Streight + Flush but no high card
+				(False, {"return_value" : True}, {"return_value" : 10}),
+				#High Card with no streight + flush
+				(False, {"return_value" : False}, {"return_value" : 14}),
+			)
+		)
+
+
+	@data_provider(is_royal_flush)
+	def test_is_royal_flush(self, expected_output, is_straight_flush_output, high_card_output):  
+		with patch.object(Classifier, 'is_straight_flush', **is_straight_flush_output) as mock:
+			with patch.object(Classifier, 'high_card', **high_card_output) as mock:
+				classifier = Classifier()
+				self.assertEquals(expected_output, classifier.is_royal_flush())
