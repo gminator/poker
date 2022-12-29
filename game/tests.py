@@ -199,3 +199,22 @@ class ClassifierTest(TestCase):
 		classifier.parse(card_string)
 		suits  = classifier.get_kinds()
 		self.assertEquals(suits, expected_output)
+
+
+
+	is_a_pair = lambda: (
+			( 
+				
+				#Successfull Test
+				(True, {"return_value" : {"2" : 2, "3" : 3}}),
+				(False, {"return_value" : {"1" : 2, "1" : 4, "3" : 3}}),
+			)
+		)
+
+
+	@data_provider(is_a_pair)
+	def test_is_a_pair(self, expected_output, get_kind_reponse):  
+		with patch.object(Classifier, 'get_kinds', **get_kind_reponse) as mock:
+			classifier = Classifier()
+			self.assertEquals(expected_output, classifier.is_a_pair())
+

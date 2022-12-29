@@ -180,3 +180,19 @@ class Classifier(object):
 			suits[c.letter] += 1
 
 		return suits 
+
+	def is_a_pair(self,):
+		"""
+		Is A Pair 
+
+		Determine if we have any 2 of the same 
+		cards in this self.cards
+
+		-- Return 
+		Boolean True|False
+
+		-- Depends 
+		Classifier.get_kinds
+		"""
+		kinds = self.get_kinds().values()
+		return 2 in kinds
