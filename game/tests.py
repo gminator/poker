@@ -335,3 +335,182 @@ class ClassifierTest(TestCase):
 			with patch.object(Classifier, 'high_card', **high_card_output) as mock:
 				classifier = Classifier()
 				self.assertEquals(expected_output, classifier.is_royal_flush())
+
+
+
+
+	evaluate = lambda: (
+			( 
+				
+				#Successfull Test
+				("Royal Flush", 
+						{"return_value" : True}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : True}, #FULL_HOUSE = "Full House"
+						{"return_value" : True}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+				
+				("Straight Flush", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : True}, #FULL_HOUSE = "Full House"
+						{"return_value" : True}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Four of a kind", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : True}, #FULL_HOUSE = "Full House"
+						{"return_value" : True}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Full House", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : True}, #FULL_HOUSE = "Full House"
+						{"return_value" : True}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Flush", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : True}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Straight", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : False}, #FLUSH = "Flush"
+						{"return_value" : True}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Three of a kind", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : False}, #FLUSH = "Flush"
+						{"return_value" : False}, #STRAIGHT = "Straight"
+						{"return_value" : True}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : True}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Two Pair", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : False}, #FLUSH = "Flush"
+						{"return_value" : False}, #STRAIGHT = "Straight"
+						{"return_value" : False}, #THREE_KIND = "Three of a kind"
+						{"return_value" : True}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : 10}, #HIGH_CARD = "High Card"
+
+				),
+
+				("Pair", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : False}, #FLUSH = "Flush"
+						{"return_value" : False}, #STRAIGHT = "Straight"
+						{"return_value" : False}, #THREE_KIND = "Three of a kind"
+						{"return_value" : False}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : True}, #PAIR = "Pair"
+						{"return_value" : 10}, #HIGH_CARD = "High Card"
+
+				),
+
+
+				("High Card", 
+						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
+					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
+						{"return_value" : False}, #FULL_HOUSE = "Full House"
+						{"return_value" : False}, #FLUSH = "Flush"
+						{"return_value" : False}, #STRAIGHT = "Straight"
+						{"return_value" : False}, #THREE_KIND = "Three of a kind"
+						{"return_value" : False}, #TOW_PAIR = "Tow Pair"
+						{"return_value" : False}, #PAIR = "Pair"
+						{"return_value" : 10}, #HIGH_CARD = "High Card"
+
+				),
+			)
+		)
+
+
+	@data_provider(evaluate)
+	def test_evaluate(self, expected_output, 
+			royal_flush,
+			streight_flush,
+			four_kind,
+			full_house,
+			flush,
+			straight,
+			three_kinds,
+			two_pair,
+			pair,
+			high_card):
+
+		#print(royal_flush)  
+		with patch.object(Classifier, 'is_royal_flush', **royal_flush) as mock:
+			with patch.object(Classifier, 'is_straight_flush', **streight_flush) as mock:
+				with patch.object(Classifier, 'is_4_of_a_kind', **four_kind) as mock:
+					with patch.object(Classifier, 'is_full_house', **full_house) as mock:
+						with patch.object(Classifier, 'is_flush', **flush) as mock:
+							with patch.object(Classifier, 'is_straight', **straight) as mock:
+								with patch.object(Classifier, 'is_3_of_a_kind', **three_kinds) as mock:
+									with patch.object(Classifier, 'is_two_pair', **two_pair) as mock:
+										with patch.object(Classifier, 'is_a_pair', **pair) as mock:
+											with patch.object(Classifier, 'high_card', **high_card) as mock:
+												classifier = Classifier()
+												self.assertEquals(expected_output, classifier.evaluate())
+

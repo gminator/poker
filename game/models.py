@@ -87,6 +87,18 @@ class Card(object):
 
 class Classifier(object): 
 
+	ROYAL_FLUSH = "Royal Flush"
+	STRAIGHT_FLUSH = "Straight Flush"
+	FOUR_KIND = "Four of a kind"
+	FULL_HOUSE = "Full House"
+	FLUSH = "Flush"
+	STRAIGHT = "Straight"
+	THREE_KIND = "Three of a kind"
+	TOW_PAIR = "Two Pair"
+	PAIR = "Pair"
+	HIGH_CARD = "High Card"
+	
+
 	def __init__(self,):
 		self.cards = []
 		
@@ -301,3 +313,37 @@ class Classifier(object):
 		Classifier.high_cards
 		"""
 		return self.is_straight_flush() and self.high_card() == 14
+
+	def evaluate(self,):
+		"""
+		Evaluate 
+
+		Combine all checks to 
+		produce the winning combination 
+
+		-- Return 
+		string Hand 
+		"""
+		if (self.is_royal_flush()): return Classifier.ROYAL_FLUSH
+		if (self.is_straight_flush()): return Classifier.STRAIGHT_FLUSH
+		if (self.is_4_of_a_kind()): return Classifier.FOUR_KIND
+		if (self.is_full_house()): return Classifier.FULL_HOUSE
+		if (self.is_flush()): return Classifier.FLUSH
+		if (self.is_straight()): return Classifier.STRAIGHT
+		if (self.is_3_of_a_kind()): return Classifier.THREE_KIND
+		if (self.is_two_pair()): return Classifier.TOW_PAIR
+		if (self.is_a_pair()): return Classifier.PAIR
+
+		return Classifier.HIGH_CARD
+		
+
+
+	"""
+	Help Methods
+	To Make testing easier 
+	"""
+	def is_4_of_a_kind(self,):return self.is_a_pair(4)
+	def is_3_of_a_kind(self,):return self.is_a_pair(3)
+	
+
+
