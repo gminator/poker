@@ -3,6 +3,8 @@ from game.models import *
 from game.exceptions import * 
 from unittest_data_provider import data_provider
 from unittest.mock import patch
+from game.views import ClassifierView
+from rest_framework.test import APIRequestFactory
 
 # Create your tests here.
 class CardTest(TestCase):
@@ -320,11 +322,11 @@ class ClassifierTest(TestCase):
 			( 
 				
 				#Successfull Test
-				(True, {"return_value" : True}, {"return_value" : 14}),
+				(True, {"return_value" : True}, {"return_value" : (14, None)}),
 				#Not Streight + Flush but no high card
-				(False, {"return_value" : True}, {"return_value" : 10}),
+				(False, {"return_value" : True}, {"return_value" : (10, None)}),
 				#High Card with no streight + flush
-				(False, {"return_value" : False}, {"return_value" : 14}),
+				(False, {"return_value" : False}, {"return_value" : (14, None)}),
 			)
 		)
 
@@ -514,3 +516,105 @@ class ClassifierTest(TestCase):
 												classifier = Classifier()
 												self.assertEquals(expected_output, classifier.evaluate())
 
+
+
+
+	api = lambda: (
+			( 
+				
+				#Royal Flush
+				(APIRequestFactory().post('/classify/', {'cards': '10H,JH,QH,KH,AH'}, format='json'),
+				200, {
+				"hand" : "Royal Flush",
+				"cards" : ["10♥","J♥","Q♥","K♥","A♥",]
+				}),
+
+
+				#Straight Flush
+				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,QH,KH'}, format='json'),
+				200, {
+				"hand" : "Straight Flush",
+				"cards" : ["9♥","10♥","J♥","Q♥","K♥"]
+				}),
+
+
+				#Straight
+				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,QC,KH'}, format='json'),
+				200, {
+				"hand" : "Straight",
+				"cards" : ["9♥","10♥","J♥","Q♣","K♥"]
+				}),
+
+
+				#Flush
+				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,5H,KH'}, format='json'),
+				200, {
+				"hand" : "Flush",
+				"cards" : ["5♥","9♥","10♥","J♥","K♥"]
+				}),
+
+
+				#Pair
+				(APIRequestFactory().post('/classify/', {'cards': '5C,10H,JH,5H,KH'}, format='json'),
+				200, {
+				"hand" : "Pair",
+				"cards" : ["5♣","5♥","10♥","J♥","K♥"]
+				}),
+
+				#2 Pair
+				(APIRequestFactory().post('/classify/', {'cards': '5C,10H,JH,5H,10C'}, format='json'),
+				200, {
+				"hand" : "Two Pair",
+				"cards" : ["5♣","5♥","10♥","10♣","J♥"]
+				}),
+
+				#4 Of Kind
+				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,5H,10C'}, format='json'),
+				200, {
+				"hand" : "Four of a kind",
+				"cards" : ["5♣","5♦","5♠","5♥","10♣"]
+				}),
+
+
+				#3 Of Kind
+				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,6H,10C'}, format='json'),
+				200, {
+				"hand" : "Three of a kind",
+				"cards" : ["5♣","5♦","5♠","6♥","10♣"]
+				}),
+
+
+				#Full House
+				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,10H,10C'}, format='json'),
+				200, {
+				"hand" : "Full House",
+				"cards" : ["5♣","5♦","5♠","10♥","10♣"]
+				}),
+
+				#Invalid Card String
+				(APIRequestFactory().post('/classify/', {'cards': '10H*&S,JH,QH,KH,AH'}, format='json'),
+				400, {"error" : "10H*&S,JH,QH,KH,AH does not match format AS,10C,10H,3D,3S"}),
+
+				#B is not a suit
+				(APIRequestFactory().post('/classify/', {'cards': '10B,JH,QH,KH,AH'}, format='json'),
+				400, {"error" : "10B,JH,QH,KH,AH does not match format AS,10C,10H,3D,3S"}),
+
+				#Card To Low
+				(APIRequestFactory().post('/classify/', {'cards': '1H,JH,QH,KH,AH'}, format='json'),
+				400, {"error" : "1 is not a valid number between 2 - 14"}),
+
+
+				#Card To Low
+				(APIRequestFactory().post('/classify/', {'cards': 'KH,JH,QH,KH,15H'}, format='json'),
+				400, {"error" : "15 is not a valid number between 2 - 14"}),
+			)
+		)
+
+
+	@data_provider(api)
+	def test_api(self, request, status, json):  
+		view = ClassifierView.as_view()
+		response = view(request)
+
+		#self.assertEquals(status, response.status_code)
+		self.assertEquals(json, response.data)

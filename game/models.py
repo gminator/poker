@@ -52,7 +52,7 @@ class Card(object):
 		if self.suit not in dict(Card.SUITS):
 			raise InvalidSuitException("%s is not a valid suit designation" % self.suit) 
 
-		if not 2 <= self.number <= 14: 
+		if not 2 <= self.number <= 14:
 			raise InvalidCardNumberException("%s is not a valid number between 2 - 14" % self.number) 
 
 		return True
@@ -74,7 +74,7 @@ class Card(object):
 		InvalidCardNumberException
 		"""
 		card = card.upper()
-		match = re.search("([0-9AJKQ]{,2})([HDSC])", card, re.IGNORECASE)
+		match = re.search("([0-9AJKQ]{1,2})([HDSC])", card, re.IGNORECASE)
 		
 		if not match:
 			raise InvalidCardStringException("%s is not a valid card string" % card)
@@ -82,6 +82,9 @@ class Card(object):
 		card = Card(card, number=match.group(1), suit=match.group(2))
 		card.validate()
 		return card
+
+	def __str__(self,):
+		return "%s%s" % (self.letter, self.symbol)
 
 
 
@@ -117,8 +120,7 @@ class Classifier(object):
 		InvalidCardNumberException
 
 		"""
-		match = re.search("([0-9AJKQ]{,2}[HDSC],?){5}", hand, re.IGNORECASE)
-
+		match = re.search("^(([0-9]{1,2}|[JQKA])[HSCD],?){5}$", hand, re.IGNORECASE)
 		if not match:
 			raise InvalidHandString("%s does not match format AS,10C,10H,3D,3S" % hand)
 
@@ -312,7 +314,8 @@ class Classifier(object):
 		Classifier.is_streight_flush
 		Classifier.high_cards
 		"""
-		return self.is_straight_flush() and self.high_card() == 14
+		number, card = self.high_card() 
+		return self.is_straight_flush() and number == 14
 
 	def evaluate(self,):
 		"""
@@ -344,6 +347,10 @@ class Classifier(object):
 	"""
 	def is_4_of_a_kind(self,):return self.is_a_pair(4)
 	def is_3_of_a_kind(self,):return self.is_a_pair(3)
+
+	def to_json(self,):
+		return [ str(c) for c in sorted(self.cards, key=lambda card: card.number)]
+
 	
 
 
