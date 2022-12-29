@@ -247,4 +247,28 @@ class Classifier(object):
 		"""	
 		kinds = self.get_suits().values() #Group in kinds 
 		return 5 in kinds
-		
+
+	def is_straight(self,):
+		"""
+		Is Straight 
+
+		Determine if all 5 cards are in sequence
+
+		-- Return 
+		Boolean True | False
+
+		"""	
+		cards = [c.number for c in  self.cards]
+		cards.sort()
+
+		#If this is a mathematical sequens 
+		# Then (value @ n + 1) - i should always be 1
+
+		for n,i in enumerate(cards):
+			n += 1
+			if n != len(cards) and (cards[n] - i) != 1:
+				return False
+		return True
+
+
+

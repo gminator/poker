@@ -276,3 +276,19 @@ class ClassifierTest(TestCase):
 			self.assertEquals(expected_output, classifier.is_flush())
 
 
+
+	is_straight = lambda: (
+			( 
+				("AS,10C,JH,QD,KS",True),
+				("5S,7C,6H,8D,9S",True),
+				("5S,7C,6H,8D,JS",False),
+			)
+		)
+
+
+	@data_provider(is_straight)
+	def test_is_straight(self, card_string, expected_output):  
+		classifier = Classifier()
+		classifier.parse(card_string)
+		self.assertEquals(expected_output, classifier.is_straight())
+
