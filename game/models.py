@@ -162,3 +162,21 @@ class Classifier(object):
 			suits[c.symbol] += 1
 
 		return suits 
+
+	def get_kinds(self,):
+		"""
+		Get Suits 
+
+		This function will group cards 
+		into their numeric values for evaluation
+
+		-- Return 
+		dictionary {String kind : int count}
+		"""
+		suits = {}
+		for c in self.cards:
+			#print(c.letter)
+			suits[c.letter] = suits.get(c.letter, 0)
+			suits[c.letter] += 1
+
+		return suits 

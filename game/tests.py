@@ -181,3 +181,21 @@ class ClassifierTest(TestCase):
 		self.assertEquals(suits, expected_output)
 
 
+
+	get_kinds = lambda: (
+			( 
+				
+				#Successfull Test
+				("2H,2S,AH,AD,AS", {"2" : 2, "A" : 3}),
+
+				("2H,2S,AH,AD,3S", {"2" : 2, "A" : 2, "3" : 1}),
+			)
+		)
+
+
+	@data_provider(get_kinds)
+	def test_get_kinds(self, card_string, expected_output):  
+		classifier = Classifier()
+		classifier.parse(card_string)
+		suits  = classifier.get_kinds()
+		self.assertEquals(suits, expected_output)
