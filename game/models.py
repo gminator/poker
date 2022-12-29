@@ -270,5 +270,21 @@ class Classifier(object):
 				return False
 		return True
 
+	def is_straight_flush(self,):
+		"""
+		Is Straight Flush 
+
+		Determine if this cards form a 
+		straight & a flush
+
+		-- Returns 
+		Boolean True|False
+
+		-- Depends
+		Classifier.is_straight
+		Classifier.is_flush
+		"""
+		return self.is_flush() and self.is_straight()
+
 
 

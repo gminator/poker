@@ -308,7 +308,7 @@ class ClassifierTest(TestCase):
 		)
 
 
-	@data_provider(is_flush)
+	@data_provider(is_straight_flush)
 	def test_is_straight_flush(self, expected_output, is_straight_output, is_flush_output):  
 		with patch.object(Classifier, 'is_straight', **is_straight_output) as mock:
 			with patch.object(Classifier, 'is_flush', **is_flush_output) as mock:
