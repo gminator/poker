@@ -160,3 +160,24 @@ class ClassifierTest(TestCase):
 		self.assertEquals(card.suit, expected.suit)
 		self.assertEquals(card.letter, expected.letter)
 		self.assertEquals(card.number, expected.number)
+
+
+	get_suits = lambda: (
+			( 
+				
+				#Successfull Test
+				("7H,6H,6C,5C,2C", {"♥" : 2, "♣" : 3}),
+
+				("3H,6H,6C,5C,2D", {"♥" : 2, "♣" : 2, "♦" : 1}),
+			)
+		)
+
+
+	@data_provider(get_suits)
+	def test_get_suits(self, card_string, expected_output):  
+		classifier = Classifier()
+		classifier.parse(card_string)
+		suits  = classifier.get_suits()
+		self.assertEquals(suits, expected_output)
+
+

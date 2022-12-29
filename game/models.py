@@ -145,3 +145,20 @@ class Classifier(object):
 				card = c
 
 		return (card.number,card)
+
+	def get_suits(self,):
+		"""
+		Get Suits 
+
+		This function will group cards 
+		into their suits for evaluation
+
+		-- Return 
+		dictionary {String suit : int count}
+		"""
+		suits = {}
+		for c in self.cards:
+			suits[c.symbol] = suits.get(c.symbol, 0)
+			suits[c.symbol] += 1
+
+		return suits 
