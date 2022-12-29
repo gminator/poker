@@ -1,7 +1,7 @@
 from django.db import models
 from game.exceptions import *
 import re
-
+from collections import Counter
 
 class Card(object):
 	"""
@@ -196,3 +196,23 @@ class Classifier(object):
 		"""
 		kinds = self.get_kinds().values()
 		return 2 in kinds
+
+
+	def is_two_pair(self,):
+		"""
+		Is A Pair 
+
+		Determine if we have any 2 of the same 
+		cards in this self.cards twice
+
+		or that 2 occurs twice in get_kinds
+
+		-- Return 
+		Boolean True|False
+
+		-- Depends 
+		Classifier.get_kinds
+		"""
+		kinds = self.get_kinds().values() #Group in kinds 
+		pairs = Counter(kinds).get(2, False) #group counts to find of there are two pairs
+		return pairs == 2

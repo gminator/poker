@@ -218,3 +218,22 @@ class ClassifierTest(TestCase):
 			classifier = Classifier()
 			self.assertEquals(expected_output, classifier.is_a_pair())
 
+
+
+
+	is_two_pair = lambda: (
+			( 
+				
+				#Successfull Test
+				(True, {"return_value" : {"3" : 2, "2" : 2, "K" : 1}}),
+				(False, {"return_value" : {"2" : 2, "3" : 3}}),
+				(False, {"return_value" : {"K" : 1,"5" : 1, "3" : 3}}),
+			)
+		)
+
+
+	@data_provider(is_two_pair)
+	def test_is_two_pair(self, expected_output, get_kind_reponse):  
+		with patch.object(Classifier, 'get_kinds', **get_kind_reponse) as mock:
+			classifier = Classifier()
+			self.assertEquals(expected_output, classifier.is_two_pair())
