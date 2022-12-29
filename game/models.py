@@ -181,7 +181,7 @@ class Classifier(object):
 
 		return suits 
 
-	def is_a_pair(self,):
+	def is_a_pair(self, search=2):
 		"""
 		Is A Pair 
 
@@ -195,7 +195,7 @@ class Classifier(object):
 		Classifier.get_kinds
 		"""
 		kinds = self.get_kinds().values()
-		return 2 in kinds
+		return search in kinds
 
 
 	def is_two_pair(self,):
@@ -214,5 +214,21 @@ class Classifier(object):
 		Classifier.get_kinds
 		"""
 		kinds = self.get_kinds().values() #Group in kinds 
-		pairs = Counter(kinds).get(2, False) #group counts to find of there are two pairs
+		pairs = Counter(kinds).get(2, False) #group counts to find of there are
 		return pairs == 2
+
+	def is_full_house(self,):
+		"""
+		Is Full House 
+
+		Determine if I have a 2 pair & a 3 pair 
+		in the same hand or self.cards
+
+		-- Return 
+		Boolean True | False
+
+		-- Depends 
+		Classifier::is_a_pair
+		"""	
+		return self.is_a_pair(2) and self.is_a_pair(3)
+		

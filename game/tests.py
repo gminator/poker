@@ -237,3 +237,24 @@ class ClassifierTest(TestCase):
 		with patch.object(Classifier, 'get_kinds', **get_kind_reponse) as mock:
 			classifier = Classifier()
 			self.assertEquals(expected_output, classifier.is_two_pair())
+
+
+
+	is_full_house = lambda: (
+			( 
+				
+				#Successfull Test
+				(True, {"return_value" : {"3" : 2, "2" : 3}}),
+				(False, {"return_value" : {"2" : 1, "3" : 3, "K" : 1}}),
+				(False, {"return_value" : {"K" : 1,"5" : 1, "A" : 2, "Q" : 1}}),
+			)
+		)
+
+
+	@data_provider(is_full_house)
+	def test_is_full_house(self, expected_output, get_kind_reponse):  
+		with patch.object(Classifier, 'get_kinds', **get_kind_reponse) as mock:
+			classifier = Classifier()
+			self.assertEquals(expected_output, classifier.is_full_house())
+
+			
