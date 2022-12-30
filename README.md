@@ -590,6 +590,8 @@ Once docker is installed you may clone and configure the container.
 git clone git@github.com:gminator/poker.git
 cd poker
 docker-compose up -d 
+docker exec -it <container-id> python manage.py migrate
+docker exec -it <container-id> python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
 ```
 
 ### Step 3: Run Unit Tests
