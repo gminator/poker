@@ -564,11 +564,16 @@ Then I should recieve False
 
 Installation & configuration instructions are below. 
 
-## Requiments 
-You will need the following in order to run the app
+### Step 1: Intall Docker Desktop 
 
-[Docker Desktop - Mac]([http://0.0.0.0:8000/classify/](https://docs.docker.com/desktop/install/mac-install/))  
+Follow the instructions for your Operating System 
 
+[Docker Desktop - Mac](https://docs.docker.com/desktop/install/mac-install/)
+[Docker Desktop - Windows](https://docs.docker.com/desktop/install/windows/)
+[Docker Desktop - Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
+
+
+### Step 2: Clone & Configure Container 
 
 ```sh=
 #Clone & Start Docker Container
