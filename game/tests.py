@@ -5,10 +5,14 @@ from unittest_data_provider import data_provider
 from unittest.mock import patch
 from game.views import ClassifierView
 from rest_framework.test import APIRequestFactory
+from rest_framework.test import APIClient
+from rest_framework.test import APIClient
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
 
 # Create your tests here.
 class CardTest(TestCase):
-
 
 	validate = lambda: (
 		( 
@@ -347,7 +351,7 @@ class ClassifierTest(TestCase):
 				#Successfull Test
 				("Royal Flush", 
 						{"return_value" : True}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : True}, #FULL_HOUSE = "Full House"
 						{"return_value" : True}, #FLUSH = "Flush"
@@ -361,7 +365,7 @@ class ClassifierTest(TestCase):
 				
 				("Straight Flush", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : True}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : True}, #FULL_HOUSE = "Full House"
 						{"return_value" : True}, #FLUSH = "Flush"
@@ -375,7 +379,7 @@ class ClassifierTest(TestCase):
 
 				("Four of a kind", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : True}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : True}, #FULL_HOUSE = "Full House"
 						{"return_value" : True}, #FLUSH = "Flush"
@@ -389,7 +393,7 @@ class ClassifierTest(TestCase):
 
 				("Full House", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : True}, #FULL_HOUSE = "Full House"
 						{"return_value" : True}, #FLUSH = "Flush"
@@ -403,7 +407,7 @@ class ClassifierTest(TestCase):
 
 				("Flush", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : True}, #FLUSH = "Flush"
@@ -417,7 +421,7 @@ class ClassifierTest(TestCase):
 
 				("Straight", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : False}, #FLUSH = "Flush"
@@ -431,7 +435,7 @@ class ClassifierTest(TestCase):
 
 				("Three of a kind", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : False}, #FLUSH = "Flush"
@@ -445,7 +449,7 @@ class ClassifierTest(TestCase):
 
 				("Two Pair", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : False}, #FLUSH = "Flush"
@@ -459,7 +463,7 @@ class ClassifierTest(TestCase):
 
 				("Pair", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : False}, #FLUSH = "Flush"
@@ -474,7 +478,7 @@ class ClassifierTest(TestCase):
 
 				("High Card", 
 						{"return_value" : False}, #ROYAL_FLUSH = "Royal Flush" 
-					 	{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
+						{"return_value" : False}, #STRAIGHT_FLUSH = "Straight Flush"
 						{"return_value" : False}, #FOUR_KIND = "Four of a kind"
 						{"return_value" : False}, #FULL_HOUSE = "Full House"
 						{"return_value" : False}, #FLUSH = "Flush"
@@ -523,7 +527,7 @@ class ClassifierTest(TestCase):
 			( 
 				
 				#Royal Flush
-				(APIRequestFactory().post('/classify/', {'cards': '10H,JH,QH,KH,AH'}, format='json'),
+				( {'cards': '10H,JH,QH,KH,AH'},
 				200, {
 				"hand" : "Royal Flush",
 				"cards" : ["10♥","J♥","Q♥","K♥","A♥",]
@@ -531,7 +535,7 @@ class ClassifierTest(TestCase):
 
 
 				#Straight Flush
-				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,QH,KH'}, format='json'),
+				( {'cards': '9H,10H,JH,QH,KH'},
 				200, {
 				"hand" : "Straight Flush",
 				"cards" : ["9♥","10♥","J♥","Q♥","K♥"]
@@ -539,7 +543,7 @@ class ClassifierTest(TestCase):
 
 
 				#Straight
-				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,QC,KH'}, format='json'),
+				( {'cards': '9H,10H,JH,QC,KH'},
 				200, {
 				"hand" : "Straight",
 				"cards" : ["9♥","10♥","J♥","Q♣","K♥"]
@@ -547,7 +551,7 @@ class ClassifierTest(TestCase):
 
 
 				#Flush
-				(APIRequestFactory().post('/classify/', {'cards': '9H,10H,JH,5H,KH'}, format='json'),
+				( {'cards': '9H,10H,JH,5H,KH'},
 				200, {
 				"hand" : "Flush",
 				"cards" : ["5♥","9♥","10♥","J♥","K♥"]
@@ -555,21 +559,21 @@ class ClassifierTest(TestCase):
 
 
 				#Pair
-				(APIRequestFactory().post('/classify/', {'cards': '5C,10H,JH,5H,KH'}, format='json'),
+				( {'cards': '5C,10H,JH,5H,KH'},
 				200, {
 				"hand" : "Pair",
 				"cards" : ["5♣","5♥","10♥","J♥","K♥"]
 				}),
 
 				#2 Pair
-				(APIRequestFactory().post('/classify/', {'cards': '5C,10H,JH,5H,10C'}, format='json'),
+				( {'cards': '5C,10H,JH,5H,10C'},
 				200, {
 				"hand" : "Two Pair",
 				"cards" : ["5♣","5♥","10♥","10♣","J♥"]
 				}),
 
 				#4 Of Kind
-				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,5H,10C'}, format='json'),
+				( {'cards': '5C,5D,5S,5H,10C'},
 				200, {
 				"hand" : "Four of a kind",
 				"cards" : ["5♣","5♦","5♠","5♥","10♣"]
@@ -577,7 +581,7 @@ class ClassifierTest(TestCase):
 
 
 				#3 Of Kind
-				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,6H,10C'}, format='json'),
+				( {'cards': '5C,5D,5S,6H,10C'},
 				200, {
 				"hand" : "Three of a kind",
 				"cards" : ["5♣","5♦","5♠","6♥","10♣"]
@@ -585,34 +589,42 @@ class ClassifierTest(TestCase):
 
 
 				#Full House
-				(APIRequestFactory().post('/classify/', {'cards': '5C,5D,5S,10H,10C'}, format='json'),
+				( {'cards': '5C,5D,5S,10H,10C'},
 				200, {
 				"hand" : "Full House",
 				"cards" : ["5♣","5♦","5♠","10♥","10♣"]
 				}),
 
 				#Invalid Card String
-				(APIRequestFactory().post('/classify/', {'cards': '10H*&S,JH,QH,KH,AH'}, format='json'),
+				( {'cards': '10H*&S,JH,QH,KH,AH'},
 				400, {"error" : "10H*&S,JH,QH,KH,AH does not match format AS,10C,10H,3D,3S"}),
 
 				#B is not a suit
-				(APIRequestFactory().post('/classify/', {'cards': '10B,JH,QH,KH,AH'}, format='json'),
+				( {'cards': '10B,JH,QH,KH,AH'},
 				400, {"error" : "10B,JH,QH,KH,AH does not match format AS,10C,10H,3D,3S"}),
 
 				#Card To Low
-				(APIRequestFactory().post('/classify/', {'cards': '1H,JH,QH,KH,AH'}, format='json'),
+				( {'cards': '1H,JH,QH,KH,AH'},
 				400, {"error" : "1 is not a valid number between 2 - 14"}),
 
 
 				#Card To Low
-				(APIRequestFactory().post('/classify/', {'cards': 'KH,JH,QH,KH,15H'}, format='json'),
+				( {'cards': 'KH,JH,QH,KH,15H'},
 				400, {"error" : "15 is not a valid number between 2 - 14"}),
 			)
 		)
 
 
 	@data_provider(api)
-	def test_api(self, request, status, json):  
+	def test_api(self, body, status, json):  
+		#raise Exception([hasattr(self, "client"), getattr(self, "token")])
+		if not hasattr(self, "token"):
+			self.client = APIClient()
+			self.user = User.objects.create_superuser('admin', 'admin@admin.com', 'admin123')
+			self.token = Token.objects.create(user=self.user)
+			#raise Exception(1)
+
+		request  = APIRequestFactory().post('/classify/', body, format='json', HTTP_AUTHORIZATION='Token {}'.format(self.token))
 		view = ClassifierView.as_view({"post" : "create"})
 		response = view(request)
 
