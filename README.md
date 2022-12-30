@@ -562,6 +562,23 @@ Then I should recieve False
 ```bash
 docker-compose up -d 
 
+#Get container ID, naming convention may change depending on OS
+docker ps
+
 #Run Unit Tests
-docker exec -it poker_web_1 python manage.py test
+docker exec -it <container-id> python manage.py test
 ```
+
+
+# Installation 
+
+```bash
+docker-compose up -d 
+
+#Get container ID, naming convention may change depending on OS
+docker ps
+
+#Run Unit Tests
+docker exec -it <container-id> python manage.py test
+```
+

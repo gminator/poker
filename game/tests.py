@@ -613,7 +613,7 @@ class ClassifierTest(TestCase):
 
 	@data_provider(api)
 	def test_api(self, request, status, json):  
-		view = ClassifierView.as_view()
+		view = ClassifierView.as_view({"post" : "create"})
 		response = view(request)
 
 		#self.assertEquals(status, response.status_code)

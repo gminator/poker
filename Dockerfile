@@ -4,4 +4,6 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /src
 COPY requirements.txt /src/
 RUN pip install -r requirements.txt
+RUN python manage.py migrate
+RUN python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
 COPY . /src/

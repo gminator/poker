@@ -5,14 +5,14 @@ from rest_framework import authentication, permissions
 from django.contrib.auth.models import User
 from game.models import Classifier
 from game.exceptions import * 
-from rest_framework import status
+from rest_framework import status,viewsets
 
 # Create your views here.
-class ClassifierView(APIView):
-	#authentication_classes = [authentication.TokenAuthentication]
-	#permission_classes = [permissions.IsAdminUser]
+class ClassifierView(viewsets.ViewSet):
+	authentication_classes = [authentication.TokenAuthentication]
+	permission_classes = (permissions.IsAuthenticated,) 
 
-	def post(self, request, format=None):
+	def create(self, request):
 		"""
 		Return a list of all users.
 		"""
@@ -26,5 +26,5 @@ class ClassifierView(APIView):
 			})
 		except GameException as e:
 			return Response({ "error" : str(e) }, status.HTTP_400_BAD_REQUEST)
-		except: 
-			return Response({ "error" : "System Error"},  status.HTTP_500_INTERNAL_SERVER_ERROR)
+		except Exception as e: 
+			return Response({ "error" : str(e)},  status.HTTP_500_INTERNAL_SERVER_ERROR)
