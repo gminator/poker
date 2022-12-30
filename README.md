@@ -562,7 +562,10 @@ Then I should recieve False
 
 # Installation 
 
-```bash
+```console
+#Clone & Start Docker Container
+git clone git@github.com:gminator/poker.git
+cd poker
 docker-compose up -d 
 
 #Get container ID, naming convention may change depending on OS
@@ -579,7 +582,7 @@ You can browse to view test API
 [http://0.0.0.0:8000/classify/](http://0.0.0.0:8000/classify/)  
 
 To run via curl
-```bash
+```console
 docker exec -it <container-id> python manage.py drf_create_token admin
 #Copy Token 
 
