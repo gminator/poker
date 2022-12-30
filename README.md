@@ -16,9 +16,12 @@
 
 
 # Summary
+
 The purpose of this Project is to demostrate my compencies in Python, OOP, SOLID and TDD.
 
-It show how I go about planning, building and testing my work. 
+It show how I go about planning, building and testing my work. All my projects are acompanied with document similar to this as part my planning approach. 
+
+This document is intended for both Stakeholders and developers, and should help reduce ambiguity in the delivery scope by clearly outline expecations and ensure that solution satisfies all critical requirements. 
 
 # Customer Brief 
 
@@ -572,13 +575,17 @@ docker exec -it <container-id> python manage.py test
 
 # Installation 
 
+You can browse to view test API 
+[http://0.0.0.0:8000/classify/](http://0.0.0.0:8000/classify/)  
+
+To run via curl
 ```bash
-docker-compose up -d 
+docker exec -it <container-id> python manage.py drf_create_token admin
+#Copy Token 
 
-#Get container ID, naming convention may change depending on OS
-docker ps
-
-#Run Unit Tests
-docker exec -it <container-id> python manage.py test
+curl --location --request POST 'http://0.0.0.0:8000/classify/' \
+--header 'Authorization: Token <Token-Id>' \
+--header 'Content-Type: application/json' \
+--data-raw '{"cards" : "5C,5D,5S,10H,10C"}' | python -m json.tool
 ```
 
