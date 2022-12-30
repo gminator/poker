@@ -564,6 +564,10 @@ Then I should recieve False
 
 The app is easily install & configured using Docker, all packages and configurations will automatically be deployed. 
 
+It will configure the following: 
+1. Django3 + Django Rest Framework + Python3
+2. Postgress Service 
+
 Follow the instructions below to run the service.
 
 ### Step 1: Intall Docker Desktop 
