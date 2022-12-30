@@ -562,18 +562,24 @@ Then I should recieve False
 
 # Installation 
 
-Installation & configuration instructions are below. 
+The app is easily install & configured using Docker, all packages and configurations will automatically be deployed. 
+
+Follow the instructions below to run the service.
 
 ### Step 1: Intall Docker Desktop 
 
-Follow the instructions for your Operating System 
+Follow the instructions for your Operating System, if you don't already have Docker Desktop
 
 [Docker Desktop - Mac](https://docs.docker.com/desktop/install/mac-install/)
+
 [Docker Desktop - Windows](https://docs.docker.com/desktop/install/windows/)
+
 [Docker Desktop - Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
 
 
 ### Step 2: Clone & Configure Container 
+
+Once docker is installed you may clone and configure the container.
 
 ```sh=
 #Clone & Start Docker Container
