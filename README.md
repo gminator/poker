@@ -589,12 +589,11 @@ Once docker is installed you may clone and configure the container.
 #Clone & Start Docker Container
 git clone git@github.com:gminator/poker.git
 cd poker
-docker-compose up -d 
-docker exec -it <container-id> python manage.py migrate
-docker exec -it <container-id> python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
+docker-compose up 
 ```
 
 ### Step 3: Run Unit Tests
+Open a new tab
 ```sh=
 #Get container ID, naming convention may change depending on OS
 docker ps
@@ -603,9 +602,12 @@ docker exec -it <container-id> python manage.py test
 ```
 
 
-### Step 4: Quey API 
+### Step 4: Configure DB & Quey API 
 
-```console
+```sh
+docker exec -it <container-id> python manage.py migrate
+docker exec -it <container-id> python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
+
 docker exec -it <container-id> python manage.py drf_create_token admin
 #Copy Token 
 
