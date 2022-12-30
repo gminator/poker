@@ -562,7 +562,15 @@ Then I should recieve False
 
 # Installation 
 
-```console
+Installation & configuration instructions are below. 
+
+## Requiments 
+You will need the following in order to run the app
+
+[Docker Desktop - Mac]([http://0.0.0.0:8000/classify/](https://docs.docker.com/desktop/install/mac-install/))  
+
+
+```sh=
 #Clone & Start Docker Container
 git clone git@github.com:gminator/poker.git
 cd poker
@@ -579,7 +587,6 @@ docker exec -it <container-id> python manage.py test
 # Installation 
 
 You can browse to view test API 
-[http://0.0.0.0:8000/classify/](http://0.0.0.0:8000/classify/)  
 
 To run via curl
 ```console
