@@ -586,20 +586,19 @@ Once docker is installed you may clone and configure the container.
 git clone git@github.com:gminator/poker.git
 cd poker
 docker-compose up -d 
+```
 
+### Step 3: Run Unit Tests
+```sh=
 #Get container ID, naming convention may change depending on OS
 docker ps
-
 #Run Unit Tests
 docker exec -it <container-id> python manage.py test
 ```
 
 
-# Installation 
+### Step 4: Quey API 
 
-You can browse to view test API 
-
-To run via curl
 ```console
 docker exec -it <container-id> python manage.py drf_create_token admin
 #Copy Token 
