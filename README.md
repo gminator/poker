@@ -590,25 +590,46 @@ Once docker is installed you may clone and configure the container.
 git clone git@github.com:gminator/poker.git
 cd poker
 docker-compose up -d
+docker exec -it django python manage.py migrate
 ```
 
 ### Step 3: Run Unit Tests
 ```sh=
-docker exec -it django python manage.py migrate
 docker exec -it django python manage.py test
 ```
 
 
 ### Step 4: Authentication & Quey API 
-
 ```sh
 docker exec -it django python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
 docker exec -it django python manage.py drf_create_token admin
-#Copy Token 
 
+```
+
+
+#### Full House
+```sh
 curl --location --request POST 'http://0.0.0.0:8000/classify/' \
---header 'Authorization: Token <Token-Id>' \
+--header 'Authorization: Token <Copy-Token-Id-Here>' \
 --header 'Content-Type: application/json' \
 --data-raw '{"cards" : "5C,5D,5S,10H,10C"}' | python -m json.tool
+```
+
+
+#### Royal Flush 
+```sh
+curl --location --request POST 'http://0.0.0.0:8000/classify/' \
+--header 'Authorization: Token <Copy-Token-Id-Here>' \
+--header 'Content-Type: application/json' \
+--data-raw '{"cards" : "10S,QS,KS,AS,JS"}' | python -m json.tool
+```
+
+
+#### 4 Of A Kind  
+```sh
+curl --location --request POST 'http://0.0.0.0:8000/classify/' \
+--header 'Authorization: Token <Copy-Token-Id-Here>' \
+--header 'Content-Type: application/json' \
+--data-raw '{"cards" : "10S,10D,5S,10H,10C"}' | python -m json.tool
 ```
 
