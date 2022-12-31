@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres
+    container_name: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -14,6 +15,7 @@ services:
       retries: 100
   web:
     build: .
+    container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/src
