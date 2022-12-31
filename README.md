@@ -598,12 +598,14 @@ docker exec -it django python manage.py test
 
 
 ### Step 4: Authentication & Quey API 
+
 ```sh
 docker exec -it django python manage.py createsuperuser --noinput --username admin --email giovann.adonis@gmail.com
 docker exec -it django python manage.py drf_create_token admin
 
 ```
 
+Copy the token in the following curl requests. 
 
 #### Full House
 ```sh
