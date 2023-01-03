@@ -117,7 +117,7 @@ I will produce a REST API using Django Rest Framework, that will accept a card s
 |ClassifierView| | |
 |-------|-| -|
 | **type** | **Name** | **Description** |
-| **json** |  POST /classify| Evalute the given cards and return a classifcation|
+| **json** |  [POST /classify](#api-stories)| Evalute the given cards and return a classifcation|
 
 
 
@@ -645,7 +645,7 @@ Then I should recieve "High Card"
 ```
 
 
-### API
+### API Stories
 
 ```
 
