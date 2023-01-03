@@ -12,13 +12,14 @@
 4.2 [API](#api)  
 5. [User Stories()](#user-stories)  
 5.1. [Card Acceptance Criteria](#card-acceptance-criteria)  
-5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
+5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)  
+5.2. [API Acceptance Criteria](#api-acceptance-criteria) 
 6. [Installation](#installation)  
 
 
 # Summary
 
-The purpose of this Project is to demonstrate my competencies  in Python, OOP, SOLID and TDD/BDD.
+The purpose of this Project is to demonstrate my competencies in Python, OOP, SOLID, TDD/BDD and Solutions Architecting.
 
 It shows how I go about planning, building and testing  work. All my projects are accompanied with document similar to this as part of my planning approach. 
 
@@ -46,7 +47,7 @@ The application is deployed using Docker Compose.
 
 The code will be written in line with the **SOLID principle** honouring single responsibility, open close principle and interface segregation in an effort to write DRY scalable code. 
 
-**Separation of concerns** is important because it facilitates good TDD or Unit tests, having fat or ambiguous functions  makes testing difficult. 
+**Separation of concerns** is important because it facilitates good TDD or Unit tests, having fat or ambiguous functions makes testing difficult. 
 
 The requirements are written in a Gherkin style, I've found that this is easier for stakeholders to validate assumptions against while still being clear enough to qualify for acceptance criteria when writing code.
 
@@ -59,8 +60,9 @@ It’s not entirely necessary to use a Framework like Django for something so si
 
 There a rules that I will negate for the purpose of the exercise. 
 
+
 #### The Joker 
-The Joker is typically used as a wild card, players can use this stand in for cards of their choice. I will not be using this card in my evaluations as it will require additional user input, and is not critical for demonstrating a working understanding of the principles I wish to convey.
+The Joker is typically used as a wild card, players can use this as a stand in for cards of their choice. I will not be using this card in my evaluations as it will require additional user input, and is not critical for demonstrating a working understanding of the principles I wish to convey.
 
 #### The Ace 
 The ace card can represent both 1 & 14, also depending on the players choice. For the purpose of the test it will always represent the highest available card. 
@@ -73,7 +75,16 @@ The supported poker hands are outlined below.
 
 
 # Design 
-The solution consists of 2 basic models one for Storing Cards and the Other for the business logic of classification and comparison of Hands. 
+The solution consists of 2 basic models one for Storing Cards and the Other for the business logic of classification and comparison of Hands.
+
+The solution is written in a 'dependancies 1st' strategy  that builds up to the API. There are a number of reason why I find this advantages:
+
+1. Its easier to follow a commit/ship often strategy.
+2. Each unit can safely be run/tested independently.
+3. Sizing is easier and more accurate when work is broken down into its smallest packets.
+4. Unit tests are easier to write when individual units are are small as possible.
+5. You can also chain your functionality using Mocking libraries at the higher levels of abstraction, further simplifying tests.
+6. In larger projects you can deliver value often and more predictably by shiping scopes i.e card evulation, follow by player modules to eventual produce a full game if the solution was to be built further 
 
 ## Card
 
@@ -117,7 +128,7 @@ I will produce a REST API using Django Rest Framework, that will accept a card s
 |ClassifierView| | |
 |-------|-| -|
 | **type** | **Name** | **Description** |
-| **json** |  [POST /classify](#api-stories)| Evalute the given cards and return a classifcation|
+| **json** |  [POST /classify](#api-acceptance-criteria)| Evalute the given cards and return a classifcation|
 
 
 
@@ -645,7 +656,9 @@ Then I should recieve "High Card"
 ```
 
 
-### API Stories
+## API Acceptance Criteria 
+
+### POST /classify
 
 ```
 
