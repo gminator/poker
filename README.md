@@ -9,6 +9,7 @@
 4. [Design](#design)  
 4.1 [Card()](#card)  
 4.1 [Classifier()](#classifier)  
+4.2 [API](#api)  
 5. [User Stories()](#user-stories)  
 5.1. [Card Acceptance Criteria](#card-acceptance-criteria)  
 5.1. [Classifier Acceptance Criteria](#classifier-acceptance-criteria)
@@ -107,16 +108,18 @@ This class will house all the business logic for the various poker hands
 | **boolean** | [is_straight()](#classifieris_strieght) | Determine if we have a sequence of 5 numbers |
 | **boolean** | [is_straight_flush()](#classifieris_flush) | Determine if we have a sequence of 5 numbers of the same suits |
 | **boolean** | [is_royal_flush()](#classifieris_royal_flush) | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
-| **boolean** | [evaluate()](#classifieris_royal_flush) | Combine all test methods to produec a classification of the cards |
+| **boolean** | [evaluate()](#evaluate) | Combine all test methods to produec a classification of the cards |
 
 ## API 
 
 I will produce a REST API using Django Rest Framework, that will accept a card string and output classifications of the cards alogn with a visual representation of the hand. 
 
-|ClassifierView | |
+|ClassifierView| | |
 |-------|-| -|
 | **type** | **Name** | **Description** |
-| **json** | POST /classify| Evalute the given cards and return a classifcation |
+| **json** |  POST /classify| Evalute the given cards and return a classifcation|
+
+
 
 
 # User Stories 
@@ -567,6 +570,212 @@ And Classifier.is_straight_flush return True
 And Classifier.get_high return 10
 And I call get Classifier::is_royal_flush()
 Then I should receive False
+```
+
+
+### Classifier::evaluate
+
+```
+
+Feature: Classifier::evaluate()
+Evaluate hand and return classification 
+
+Scenario: Royal Flush 
+Given I have a Classifier()
+	|AH,10H,KH,JH,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Royal Flush"
+
+Scenario: Striaght Flush  
+Given I have a Classifier()
+	|9H,10H,KH,JH,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Streight Flush"
+
+Scenario: Four Of A kind  
+Given I have a Classifier()
+	|9H,9S,9C,9D,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Four Of A Kind"
+
+
+Scenario: Full House 
+Given I have a Classifier()
+	|9H,9S,9C,QD,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Full House"
+
+Scenario: Flush
+Given I have a Classifier()
+	|2H,3H,9H,AH,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Flush"
+
+Scenario: Striaght   
+Given I have a Classifier()
+	|9D,10H,KH,JH,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Streight"
+
+
+Scenario: Three of a Kind   
+Given I have a Classifier()
+	|9D,9D,9C,JH,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Three of a kind"
+
+Scenario: Two Pair   
+Given I have a Classifier()
+	|9D,9D,10C,10H,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Two Pair"
+
+
+Scenario: Pair   
+Given I have a Classifier()
+	|9D,9D,10C,11H,QH|
+And I call Classifier.evalute() 
+Then I should recieve "Pair"
+
+Scenario: High Card   
+Given I have a Classifier()
+	|9D,7D,10C,11H,QH|
+And I call Classifier.evalute() 
+Then I should recieve "High Card"
+```
+
+
+### API
+
+```
+
+Feature: Classifier::evaluate()
+Evaluate hand and return classification 
+
+Scenario: No Auth 
+Given I have don't have a valid token 
+And POST /classify with:
+{"cards" : "9H,10H,KH,JH,QH"}
+Then I should receive a 401 
+
+
+Scenario: Invalid Cards string  
+Given I have a valid token 
+And POST /classify with:
+{"cards" : "garbage"}
+Then I should receive a 400 with:
+{"error" : "garbage does not match format AS,10C,10H,3D,3S"}
+
+Scenario: Invalid Suit Assignment 
+Given I have a valid token 
+And POST /classify with:
+{"cards" : "10B,JH,QH,KH,AH'"}
+Then I should receive a 400 with:
+{"error" : "10B,JH,QH,KH,AH does not match format AS,10C,10H,3D,3S"}
+
+Scenario: Invalid Numeric Assignment Too Low
+Given I have a valid token 
+And POST /classify with:
+{"cards" : "1H,JH,QH,KH,AH"}
+Then I should receive a 400 with:
+{"error" : "1 is not a valid number between 2 - 14"}
+
+Scenario: Invalid Numeric Assignment Too High
+Given I have a valid token 
+And POST /classify with:
+{"cards" : "KH,JH,QH,KH,15H"}
+Then I should receive a 400 with:
+{"error" : "15 is not a valid number between 2 - 14"}
+
+Scenario: Royal Flush 
+Given I have a valid token 
+And POST /classify with:
+{'cards': '10H,JH,QH,KH,AH'}
+Then I should receive a 200 with:
+{
+	"hand" : "Royal Flush",
+	"cards" : ["10♥","J♥","Q♥","K♥","A♥",]
+}
+
+Scenario: Straight Flush 
+Given I have a valid token 
+And POST /classify with:
+{'cards': '9H,10H,JH,QH,KH'}
+Then I should receive a 200 with:
+{
+	"hand" : "Straight Flush",
+	"cards" : ["9♥","10♥","J♥","Q♥","K♥"]
+}
+
+Scenario: Straight
+Given I have a valid token 
+And POST /classify with:
+{'cards': '9H,10H,JH,QC,KH'}
+Then I should receive a 200 with:
+{
+	"hand" : "Straight",
+	"cards" : ["9♥","10♥","J♥","Q♣","K♥"]
+}
+
+Scenario: Flush
+Given I have a valid token 
+And POST /classify with:
+{'cards': '9H,10H,JH,5H,KH'}
+Then I should receive a 200 with:
+{
+	"hand" : "Flush",
+	"cards" : ["5♥","9♥","10♥","J♥","K♥"]
+}
+
+Scenario: Pair
+Given I have a valid token 
+And POST /classify with:
+{'cards': '5C,10H,JH,5H,KH'}
+Then I should receive a 200 with:
+{
+	"hand" : "Pair",
+	"cards" : ["5♣","5♥","10♥","J♥","K♥"]
+}
+
+Scenario: 2 Pair
+Given I have a valid token 
+And POST /classify with:
+{'cards': '5C,10H,JH,5H,10C'}
+Then I should receive a 200 with:
+{
+	"hand" : "Two Pair",
+	"cards" : ["5♣","5♥","10♥","10♣","J♥"]
+}
+
+Scenario: 4 Of A Kind
+Given I have a valid token 
+And POST /classify with:
+{'cards': '5C,5D,5S,5H,10C'}
+Then I should receive a 200 with:
+{
+	"hand" : "Four of a kind",
+	"cards" : ["5♣","5♦","5♠","5♥","10♣"]
+}
+
+Scenario: 4 Of A Kind
+Given I have a valid token 
+And POST /classify with:
+{'cards': '5C,5D,5S,6H,10C'}
+Then I should receive a 200 with:
+{
+	"hand" : "Three of a kind",
+	cards" : ["5♣","5♦","5♠","6♥","10♣"]
+}
+
+Scenario: Full House
+Given I have a valid token 
+And POST /classify with:
+{'cards': '5C,5D,5S,10H,10C'}
+Then I should receive a 200 with:
+{
+	"hand" : "Full House",
+	"cards" : ["5♣","5♦","5♠","10♥","10♣"]
+}
 ```
 
 # Installation 
