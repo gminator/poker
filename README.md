@@ -107,6 +107,17 @@ This class will house all the business logic for the various poker hands
 | **boolean** | [is_straight()](#classifieris_strieght) | Determine if we have a sequence of 5 numbers |
 | **boolean** | [is_straight_flush()](#classifieris_flush) | Determine if we have a sequence of 5 numbers of the same suits |
 | **boolean** | [is_royal_flush()](#classifieris_royal_flush) | Determine if we have a sequence of 5 numbers of the same suits & with highest card being A |
+| **boolean** | [evaluate()](#classifieris_royal_flush) | Combine all test methods to produec a classification of the cards |
+
+## API 
+
+I will produce a REST API using Django Rest Framework, that will accept a card string and output classifications of the cards alogn with a visual representation of the hand. 
+
+|ClassifierView | |
+|-------|-| -|
+| **type** | **Name** | **Description** |
+| **json** | POST /classify| Evalute the given cards and return a classifcation |
+
 
 # User Stories 
 Below are the user stories written in a Gherkin styles. I prefer this method for writing out test cases, it makes it easy for both Stakeholders and developers to understand and critique the proposed flow.
