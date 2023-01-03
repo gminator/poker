@@ -77,14 +77,16 @@ The supported poker hands are outlined below.
 # Design 
 The solution consists of 2 basic models one for Storing Cards and the Other for the business logic of classification and comparison of Hands.
 
-The solution is written in a 'dependancies 1st' strategy  that builds up to the API. There are a number of reason why I find this advantages:
+The solution is written in a 'dependancies 1st' strategy  that builds up to the API. There are a number of reasons why I favor this approach:
 
 1. Its easier to follow a commit/ship often strategy.
-2. Each unit can safely be run/tested independently.
-3. Sizing is easier and more accurate when work is broken down into its smallest packets.
-4. Unit tests are easier to write when individual units are are small as possible.
-5. You can also chain your functionality using Mocking libraries at the higher levels of abstraction, further simplifying tests.
-6. In larger projects you can deliver value often and more predictably by shiping scopes i.e card evulation, follow by player modules to eventual produce a full game if the solution was to be built further 
+2. Each unit can safely be run/tested independently with more real world data.
+3. Each story is a contract, and can effectively be worked on independently/simultaniously, this is better for collaboration and timing 
+5. Easier to follow an Agile methodology, sizing of work is easier and more accurate when work is broken down into its smallest packets.
+6. Unit tests are easier to write when individual units are as small as possible.
+7. You can also chain your functionality using Mocking libraries at the higher levels of abstraction, further simplifying tests.
+8. In larger projects you can deliver value often and more predictably by shiping scopes i.e card evaluation, follow by player modules to eventually produce a full game if the solution was to be built further 
+9. This approach is not only good for regression, but also for later modification. If done correctly you will only need to change code in one place as the business requirements evolve and change.
 
 ## Card
 
